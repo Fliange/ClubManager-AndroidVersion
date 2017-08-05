@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.nankai.clubmanager.LoginActivity">
+    tools:context="com.nankai.clubmanager.activity.LoginActivity">
 
     <EditText
         android:layout_width="368dp"
@@ -13,10 +13,7 @@
         android:id="@+id/login_username"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="8dp" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="abc_actio"/>
+
     <EditText
         android:id="@+id/login_password"
         android:layout_width="368dp"
@@ -27,7 +24,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="登录lll"/>
+        android:text="登录"/>
 
     <TextView
         android:layout_width="wrap_content"

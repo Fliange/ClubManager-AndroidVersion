@@ -1,7 +1,9 @@
-package com.nankai.clubmanager;
+package com.nankai.clubmanager.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.nankai.clubmanager.R;
 
 public class LoginActivity extends AppCompatActivity {
 
