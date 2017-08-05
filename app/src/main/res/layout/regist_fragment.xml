@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.nankai.clubmanager.RegistViewFragment">
+    tools:context="com.nankai.clubmanager.fragment.RegistViewFragment">
 
     <include
         android:id="@+id/resist_title"

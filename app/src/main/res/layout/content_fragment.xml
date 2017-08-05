@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.nankai.clubmanager.ContentFragment">
+    tools:context="com.nankai.clubmanager.fragment.ContentFragment">
 
     <TextView
         android:layout_width="match_parent"

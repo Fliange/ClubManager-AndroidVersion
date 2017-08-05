@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="45dp"
-    tools:context="com.nankai.clubmanager.TitleFragment">
+    tools:context="com.nankai.clubmanager.fragment.TitleFragment">
 
     <ImageButton
         android:id="@+id/id_title_left_btn"

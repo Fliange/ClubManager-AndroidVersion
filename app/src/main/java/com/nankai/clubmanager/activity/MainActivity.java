@@ -1,4 +1,4 @@
-package com.nankai.clubmanager;
+package com.nankai.clubmanager.activity;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -7,17 +7,34 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 
+import com.nankai.clubmanager.R;
+import com.nankai.clubmanager.fragment.FoundViewFragment;
+import com.nankai.clubmanager.fragment.HomePageFragment;
+import com.nankai.clubmanager.fragment.ManageViewFragment;
+import com.nankai.clubmanager.fragment.RegistViewFragment;
 import com.nankai.library.NaviView;
 
+import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
+
+@ContentView(R.layout.activity_main)
 public class MainActivity extends Activity {
 
     private Fragment contentFragment;
     private FragmentManager fragmentManager;
     private FragmentTransaction transaction;
 
+    @ViewInject(R.id.view_homepage)
     private NaviView mHomePageView;//主页
+
+    @ViewInject(R.id.view_found)
     private NaviView mFoundView;//发现
+
+    @ViewInject(R.id.view_manage)
     private NaviView mManageView;//管理
+
+    @ViewInject(R.id.view_regist)
     private NaviView mRegistView;//报名
 
 
@@ -25,20 +42,18 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        x.view().inject(this);
         initUi();
     }
 
     private void initUi(){
-        mHomePageView = (NaviView) findViewById(R.id.view_homepage);
+
         mHomePageView.setOnClickListener(itemClick);
 
-        mRegistView = (NaviView) findViewById(R.id.view_regist);
         mRegistView.setOnClickListener(itemClick);
 
-        mFoundView = (NaviView) findViewById(R.id.view_found);
         mFoundView.setOnClickListener(itemClick);
 
-        mManageView = (NaviView)findViewById(R.id.view_manage);
         mManageView.setOnClickListener(itemClick);
 
         mHomePageView.setBigIcon(R.drawable.home_page_big);

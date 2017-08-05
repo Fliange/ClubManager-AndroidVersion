@@ -1,7 +1,9 @@
-package com.nankai.clubmanager;
+package com.nankai.clubmanager.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.nankai.clubmanager.R;
 
 public class PasswordUpdateActivity extends Activity {
 
