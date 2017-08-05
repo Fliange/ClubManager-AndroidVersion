@@ -1,4 +1,4 @@
-package com.nankai.clubmanager;
+package com.nankai.clubmanager.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -7,14 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * Created by zhangjin on 2017/8/5.
- */
+import com.nankai.clubmanager.R;
 
-public class RegistViewFragment extends Fragment{
+public class ManageViewFragment extends Fragment {
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.regist_fragment, container,false);
+        return inflater.inflate(R.layout.manage_fragment, container,false);
     }
 }

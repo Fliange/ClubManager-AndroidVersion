@@ -1,4 +1,4 @@
-package com.nankai.clubmanager;
+package com.nankai.clubmanager.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.nankai.clubmanager.R;
 
 public class TitleFragment extends Fragment {
 

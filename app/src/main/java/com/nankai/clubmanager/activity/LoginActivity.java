@@ -1,4 +1,4 @@
-package com.nankai.clubmanager;
+package com.nankai.clubmanager.activity;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
@@ -11,12 +11,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
-import android.view.Window;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.nankai.clubmanager.JellyInterpolator;
+import com.nankai.clubmanager.R;
 
 
 public class LoginActivity extends Activity implements OnClickListener{
