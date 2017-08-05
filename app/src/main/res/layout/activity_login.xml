@@ -22,12 +22,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="登录(张一尘假装修改了)"/>
+        android:text="登录(张一尘假装修改了111)"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="修改密码"/>
+        android:text="修改密码"/>1
 
 
 
