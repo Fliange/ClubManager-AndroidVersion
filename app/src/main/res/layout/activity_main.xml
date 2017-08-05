@@ -10,7 +10,8 @@
     <!--中间内容-->
     <FrameLayout android:id="@+id/fragmentPager"
         android:layout_width="match_parent"
-        android:layout_height="550dp"/>
+        android:layout_height="550dp"
+        android:layout_above="@+id/bottom_navi"/>
 
     <!--底部导航栏-->
 
@@ -20,6 +21,7 @@
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:background="#ffffff"
+        android:id="@+id/bottom_navi"
         android:paddingBottom="4dp"
         android:elevation="4dp">
 
