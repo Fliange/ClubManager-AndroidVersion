@@ -1,13 +1,17 @@
 package com.nankai.clubmanager.activity;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.nankai.clubmanager.R;
 
 import org.xutils.view.annotation.ContentView;
@@ -16,6 +20,9 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -34,6 +41,10 @@ public class ChatRoomActivity extends AppCompatActivity {
     private EditText chatroomInput;
     @ViewInject(R.id.chatroom_btm)
     private Button chatroomBtm;
+    @ViewInject(R.id.chatroom_img)
+    private ImageView chatroomImg;
+
+
 
     //用来进行与后端通信的okHttpClient
     private OkHttpClient okHttpClient = new OkHttpClient();
@@ -56,7 +67,7 @@ public class ChatRoomActivity extends AppCompatActivity {
                                     .build();
 
         Request.Builder builder = new Request.Builder();
-        Request request = builder.url("http://192.168.40.72:8080/PClubManager/Chat_test")
+        Request request = builder.url("http://192.168.40.72:8080/PClubManager/Act_showAllForList")
                                 .post(formBody)
                                 .build();
         exec(request);
@@ -80,15 +91,54 @@ public class ChatRoomActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 Log.i("成功：","-----");
-                String s = response.body().string();
-                final String msg = s;
+                //从服务器传回来的json字符串
+                final String msg = response.body().string();
+                //解析json
+                /**将json字符串转换为List<Map<String,Object>>
+                 * @param jsonString
+                 * @return
+                 */
+
+                 List<Map<String, Object>> arrayList = JSON.parseObject(msg,
+                            new TypeReference<List<Map<String, Object>>>() {
+                            });
+                //遍历json数组
+                /*for (int i = 0; i < jsonArray.size(); i++) {
+
+                }*/
+                Map<String, Object> activity = arrayList.get(0);
+                final String activityName = (String) activity.get("ActivityName");
+                String activityPic = (String) activity.get("ActivityPicture");
+                String IMAGE_URL = "http://192.168.40.72:8080/PClubManager/images/"+activityPic;
+                final Drawable drawable = loadImageFromNetwork(IMAGE_URL);
+
+
                 ChatRoomActivity.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        chatroomContent.setText(msg);
-                    }
-                });
-            }
+                        @Override
+                        public void run() {
+                            chatroomContent.setText(activityName);
+                            chatroomImg.setImageDrawable(drawable) ;
+                        }
+                    });
+                }
         });
+    }
+
+    //获取图片的函数
+    private Drawable loadImageFromNetwork(String imageUrl)
+    {
+        Drawable drawable = null;
+        try {
+            // 可以在这里通过文件名来判断，是否本地有此图片
+            drawable = Drawable.createFromStream(new URL(imageUrl).openStream(), "image.jpg");
+        } catch (IOException e) {
+            Log.d("test", e.getMessage());
+        }
+        if (drawable == null) {
+            Log.d("test", "null drawable");
+        } else {
+            Log.d("test", "not null drawable");
+        }
+        return drawable ;
     }
 }

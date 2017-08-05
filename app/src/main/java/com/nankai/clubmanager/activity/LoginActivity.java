@@ -70,8 +70,6 @@ public class LoginActivity extends Activity {
                 mName.setVisibility(View.INVISIBLE);
                 mPsw.setVisibility(View.INVISIBLE);
                 inputAnimator(mInputLayout, mWidth, mHeight);
-                //与后台连接
-
                 break;
             case R.id.main_update:
                 break;

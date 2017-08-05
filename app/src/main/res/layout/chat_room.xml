@@ -14,8 +14,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="内容框"
-    android:textSize="40sp"/>
+    android:textSize="12sp"/>
 </ScrollView>
+<ImageView
+    android:id="@+id/chatroom_img"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
 <EditText
     android:id="@+id/chatroom_input"
     android:layout_width="match_parent"

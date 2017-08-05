@@ -14,6 +14,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:id="@+id/homepage_listview">
+            </ListView>
                 <ImageView
                     android:id="@+id/homepage_activity_picture_1"
                     android:layout_width="match_parent"
