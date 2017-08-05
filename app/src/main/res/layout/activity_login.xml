@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#7adfb8"
-    tools:context="com.nankai.clubmanager.LoginActivity">
+    tools:context="com.nankai.clubmanager.activity.LoginActivity">
 
     <include
         android:id="@+id/login_title"
@@ -48,7 +48,7 @@
         android:layout_centerInParent="true" >
 
         <include
-            android:id="@+id/input_layout"
+
             android:layout_width="match_parent"
             android:layout_height="130dip"
             layout="@layout/input_layout" />

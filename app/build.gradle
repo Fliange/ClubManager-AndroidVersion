@@ -33,4 +33,5 @@ dependencies {
     compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.8.1'
     // https://mvnrepository.com/artifact/com.alibaba/fastjson
     compile group: 'com.alibaba', name: 'fastjson', version: '1.2.35'
+    compile project(':library')
 }
