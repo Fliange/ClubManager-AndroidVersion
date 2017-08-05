@@ -1,29 +1,18 @@
 package com.nankai.clubmanager.extra;
 
-import org.litepal.LitePalApplication;
+import android.app.Application;
+
 import org.xutils.x;
 
 /**
- * Created by winnie on 2017/7/29.
+ * Created by Miles on 2017/8/4.
  */
 
-public class MyApplication extends LitePalApplication {
-
-    private String name;
-    //http://localhost:8080/
-
+public class MyApplication extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
-        setName("hello");
-        x.Ext.init(this);//初始化xutils
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        x.Ext.init(this);
+        x.Ext.setDebug(true);
     }
 }
