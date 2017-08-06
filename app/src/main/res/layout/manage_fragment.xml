@@ -7,13 +7,15 @@
     android:orientation="vertical"
     tools:context="com.nankai.clubmanager.fragment.ManageViewFragment">
 
-    <include
-        android:id="@+id/manage_title"
-        layout="@layout/title1" />
+    <com.nankai.library.PagerSlidingTabStrip
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/light_black_bg" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="管理"/>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
