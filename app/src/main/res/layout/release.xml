@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.nankai.clubmanager.ReleaseActivity">
+    tools:context="com.nankai.clubmanager.activity.ReleaseActivity">
     <jp.wasabeef.richeditor.RichEditor
         android:id="@+id/rich_edit"
         android:layout_width="match_parent"

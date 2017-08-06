@@ -1,10 +1,12 @@
-package com.nankai.clubmanager;
+package com.nankai.clubmanager.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+
+import com.nankai.clubmanager.R;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
