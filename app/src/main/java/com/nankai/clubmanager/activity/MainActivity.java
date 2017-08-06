@@ -1,10 +1,10 @@
 package com.nankai.clubmanager.activity;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
 import com.nankai.clubmanager.R;
@@ -19,7 +19,7 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 @ContentView(R.layout.activity_main)
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 
     private Fragment contentFragment;
     private FragmentManager fragmentManager;
@@ -59,7 +59,7 @@ public class MainActivity extends Activity {
         mHomePageView.setBigIcon(R.drawable.home_page_big);
         mHomePageView.setSmallIcon(R.drawable.home_page_small);
         //fragment管理者
-        fragmentManager = getFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         transaction = fragmentManager.beginTransaction();
         Fragment init = new HomePageFragment();
         transaction.replace(R.id.fragmentPager,init,"fragment");
@@ -87,7 +87,6 @@ public class MainActivity extends Activity {
                     break;
                 case R.id.view_found:
                     mFoundView.setBigIcon(R.drawable.found);
-
                     contentFragment = new FoundViewFragment();
                     transaction.replace(R.id.fragmentPager, contentFragment);
                     break;

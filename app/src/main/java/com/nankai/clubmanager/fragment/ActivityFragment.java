@@ -9,14 +9,11 @@ import android.view.ViewGroup;
 
 import com.nankai.clubmanager.R;
 
-/**
- * Created by zhangjin on 2017/8/5.
- */
+public class ActivityFragment extends Fragment {
 
-public class FoundViewFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.found_fragment, container,false);
+        return inflater.inflate(R.layout.activity_fragment, container,false);
     }
 }
