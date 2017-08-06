@@ -72,6 +72,8 @@ public class LoginActivity extends Activity {
                 inputAnimator(mInputLayout, mWidth, mHeight);
                 break;
             case R.id.main_update:
+                Intent intent=new Intent(LoginActivity.this,PasswordUpdateActivity.class);
+                startActivity(intent);
                 break;
         }
     }
@@ -87,7 +89,7 @@ public class LoginActivity extends Activity {
                     startActivity(intent);
                 }else{
                     Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent(LoginActivity.this,ChatRoomActivity.class);
+                    Intent intent=new Intent(LoginActivity.this,MainActivity.class);
                     startActivity(intent);
                     //管理员或者是部门内部的人登录，把他们的职位存起来
                     SharedPreferences.Editor editor = sp.edit();
@@ -186,12 +188,13 @@ public class LoginActivity extends Activity {
 
             @Override
             public void onAnimationEnd(Animator animation) {
+                //与后台连接
                 FormBody.Builder builder1 = new FormBody.Builder();
                 String use = username.getText().toString();
                 FormBody formBody = builder1.add("username",username.getText().toString())
                         .add("pwd", password.getText().toString()).build();
                 Request.Builder builder = new Request.Builder();
-                Request request1 = builder.url("http://192.168.40.70:8080/PClubManager/login")
+                Request request1 = builder.url("http://192.168.40.70:8080/PClubManager/loginForAndroid")
                         .post(formBody)
                         .build();
                 exec(request1);
