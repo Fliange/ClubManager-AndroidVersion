@@ -3,6 +3,9 @@
     package="com.nankai.clubmanager">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".extra.MyApplication"
@@ -14,6 +17,9 @@
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.ChatRoomActivity"></activity>
         <activity android:name=".activity.MainActivity">
+
+        </activity>
+        <activity android:name=".activity.ReleaseActivity">
         </activity>
         <activity android:name=".activity.ChangeImageActivity">
             <intent-filter>

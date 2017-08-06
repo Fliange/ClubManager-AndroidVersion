@@ -106,6 +106,8 @@ public class MainActivity extends Activity {
                     mHomePageView.setSmallIcon(R.drawable.home_page_small);
                     contentFragment = new HomePageFragment();
                     transaction.replace(R.id.fragmentPager, contentFragment);
+                    //每次会跳到首页，都要到数据库把首页要显示的内容拿出来
+                    setHomePage();
                     break;
                 case R.id.view_regist:
                     mRegistView.setBigIcon(R.drawable.regist_big);

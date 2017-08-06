@@ -11,6 +11,5 @@
 <TextView
     android:id="@+id/item_text"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:text="这是没有排版的活动摘要"/>
+    android:layout_height="100dp"/>
 </LinearLayout>
