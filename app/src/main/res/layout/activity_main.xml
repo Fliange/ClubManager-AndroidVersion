@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.nankai.clubmanager.activity.MainActivity">
 
-
     <!--中间内容-->
     <FrameLayout android:id="@+id/fragmentPager"
         android:layout_width="match_parent"

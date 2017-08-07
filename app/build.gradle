@@ -55,3 +55,12 @@ dependencies {
     compile 'com.android.support:support-v4:22.2.1'
     testCompile 'junit:junit:4.12'
 }
+
+//侧拉框的抖动效果
+repositories {
+    jcenter()
+}
+dependencies {
+    compile 'com.mxn.soul:flowingdrawer-core:2.0.0'
+    compile 'com.nineoldandroids:library:2.4.0'
+}
