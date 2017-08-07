@@ -58,24 +58,23 @@
                 android:contentDescription="@null"
                 android:src="@drawable/italic"
                 />
-
             <ImageButton
-                android:id="@+id/action_subscript"
+                android:id="@+id/action_cam"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@null"
                 android:contentDescription="@null"
-                android:src="@drawable/subscript"
+                android:src="@drawable/cam"
                 />
-
             <ImageButton
-                android:id="@+id/action_superscript"
+                android:id="@+id/action_insert_image"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@null"
                 android:contentDescription="@null"
-                android:src="@drawable/superscript"
+                android:src="@drawable/insert_image"
                 />
+
 
             <ImageButton
                 android:id="@+id/action_strikethrough"
@@ -239,15 +238,24 @@
                 android:contentDescription="@null"
                 android:src="@drawable/blockquote"
                 />
-
             <ImageButton
-                android:id="@+id/action_insert_image"
+                android:id="@+id/action_subscript"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@null"
                 android:contentDescription="@null"
-                android:src="@drawable/insert_image"
+                android:src="@drawable/subscript"
                 />
+
+            <ImageButton
+                android:id="@+id/action_superscript"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@null"
+                android:contentDescription="@null"
+                android:src="@drawable/superscript"
+                />
+
 
             <ImageButton
                 android:id="@+id/action_insert_link"

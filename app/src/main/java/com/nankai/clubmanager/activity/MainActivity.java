@@ -1,15 +1,11 @@
 package com.nankai.clubmanager.activity;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -90,7 +86,7 @@ public class MainActivity extends FragmentActivity {
         mHomePageView.setBigIcon(R.drawable.home_page_big);
         mHomePageView.setSmallIcon(R.drawable.home_page_small);
         //fragment管理者
-        fragmentManager = getFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         transaction = fragmentManager.beginTransaction();
         Fragment init = new HomePageFragment();
         transaction.replace(R.id.fragmentPager,init,"fragment");
