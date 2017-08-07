@@ -10,8 +10,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.TypeReference;
 import com.nankai.clubmanager.R;
 
 import org.xutils.view.annotation.ContentView;
@@ -21,8 +19,6 @@ import org.xutils.x;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
-import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -67,7 +63,7 @@ public class ChatRoomActivity extends AppCompatActivity {
                                     .build();
 
         Request.Builder builder = new Request.Builder();
-        Request request = builder.url("http://192.168.40.72:8080/PClubManager/Act_showAllForList")
+        Request request = builder.url("http://192.168.40.72:8080/PClubManager/Chat_test")
                                 .post(formBody)
                                 .build();
         exec(request);
@@ -93,31 +89,11 @@ public class ChatRoomActivity extends AppCompatActivity {
                 Log.i("成功：","-----");
                 //从服务器传回来的json字符串
                 final String msg = response.body().string();
-                //解析json
-                /**将json字符串转换为List<Map<String,Object>>
-                 * @param jsonString
-                 * @return
-                 */
-
-                 List<Map<String, Object>> arrayList = JSON.parseObject(msg,
-                            new TypeReference<List<Map<String, Object>>>() {
-                            });
-                //遍历json数组
-                /*for (int i = 0; i < jsonArray.size(); i++) {
-
-                }*/
-                Map<String, Object> activity = arrayList.get(0);
-                final String activityName = (String) activity.get("ActivityName");
-                String activityPic = (String) activity.get("ActivityPicture");
-                String IMAGE_URL = "http://192.168.40.72:8080/PClubManager/images/"+activityPic;
-                final Drawable drawable = loadImageFromNetwork(IMAGE_URL);
-
 
                 ChatRoomActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            chatroomContent.setText(activityName);
-                            chatroomImg.setImageDrawable(drawable) ;
+                            chatroomContent.setText(msg);
                         }
                     });
                 }
