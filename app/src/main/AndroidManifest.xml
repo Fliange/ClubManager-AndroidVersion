@@ -21,7 +21,7 @@
         <activity android:name=".activity.MainActivity">
 
         </activity>
-        <activity android:name=".activity.ReleaseActivity">
+        <activity android:name=".activity.ReleaseActivity" android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
