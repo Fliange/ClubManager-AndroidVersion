@@ -1,24 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.nankai.clubmanager.fragment.HomePageFragment">
-
-    <ScrollView
+    <com.mxn.soul.flowingdrawer_core.FlowingDrawer
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/drawerlayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        app:edPosition="1"
+        app:edMenuSize="260dp"
+        app:edMenuBackground="#dddddd"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        tools:context="com.nankai.clubmanager.fragment.HomePageFragment">
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <ListView
+            android:layout_height="wrap_content">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:id="@+id/homepage_listview">
-            </ListView>
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:id="@+id/homepage_listview">
+                </ListView>
+            </LinearLayout>
+        </ScrollView>
+
+        <!--menu-->
+        <com.mxn.soul.flowingdrawer_core.FlowingMenuLayout
+            android:id="@+id/menulayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/id_container_menu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/myphoto"
+                    android:src="@drawable/test_pic"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/modify_password"
+                    android:text="修改密码" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/modify_information"
+                    android:text="修改个人信息" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/myapartment"
+                    android:text="我的部门" />
+            </LinearLayout>
+
+
+        </com.mxn.soul.flowingdrawer_core.FlowingMenuLayout>
+
+    </com.mxn.soul.flowingdrawer_core.FlowingDrawer>
+
+
+
+
+
+
+

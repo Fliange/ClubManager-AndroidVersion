@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="80dp">
+        <!-- Bottom View Start-->
+        <LinearLayout
+            android:background="#66ddff00"
+            android:id="@+id/material_item_bottom_wrapper"
+            android:layout_width="50dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/material_item_delete"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/delete"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Surface View Start -->
+        <LinearLayout
+            android:padding="10dp"
+            android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--What you want to show in SurfaceView-->
+            <ImageView
+                android:id="@+id/item_img_manage_material"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/head_image"/>
+            <TextView
+                android:id="@+id/item_content_manage_material"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="50dp"
+                android:text="标题1"/>
+        </LinearLayout>
+        <!-- Surface View End -->
+    </com.daimajia.swipe.SwipeLayout>
+
+</LinearLayout>
