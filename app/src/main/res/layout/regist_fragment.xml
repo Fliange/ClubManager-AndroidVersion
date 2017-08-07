@@ -15,11 +15,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"></DatePicker>
-    <DatePicker
-        android:id="@+id/date"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"></DatePicker>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
     <LinearLayout
         android:layout_width="350dp"
         android:layout_height="wrap_content"
@@ -31,6 +33,7 @@
             android:text="学号"
             android:textSize="20dp"/>
         <EditText
+            android:id="@+id/number"
             android:layout_width="125dp"
             android:layout_height="wrap_content" />
         <TextView
@@ -40,6 +43,7 @@
             android:text="姓名"
             android:textSize="20dp"/>
         <EditText
+            android:id="@+id/name"
             android:layout_width="120dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -55,6 +59,7 @@
             android:text="性别"
             android:textSize="20dp"/>
         <Spinner
+            android:id="@+id/sex"
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:entries="@array/sex">
@@ -67,6 +72,7 @@
             android:text="籍贯"
             android:textSize="20dp"/>
         <Spinner
+            android:id="@+id/hometown"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:entries="@array/home">
@@ -84,6 +90,7 @@
             android:text="电话"
             android:textSize="20dp"/>
         <EditText
+            android:id="@+id/telphone"
             android:layout_width="125dp"
             android:layout_height="wrap_content">
         </EditText>
@@ -95,6 +102,7 @@
             android:text="专业"
             android:textSize="20dp"/>
         <Spinner
+            android:id="@+id/major"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:entries="@array/college">
@@ -106,17 +114,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_gravity="center">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="日期"
-            android:textSize="20dp"/>
-        <EditText
-            android:id="@+id/choosedate"
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:text="报名时间">
-        </EditText>
 
         <TextView
             android:layout_width="wrap_content"
@@ -142,6 +139,7 @@
             android:text="志愿1"
             android:textSize="20dp"/>
         <Spinner
+            android:id="@+id/intent1"
             android:layout_width="115dp"
             android:layout_height="wrap_content">
         </Spinner>
@@ -153,6 +151,7 @@
             android:text="志愿2"
             android:textSize="20dp"/>
         <Spinner
+            android:id="@+id/intent2"
             android:layout_width="110dp"
             android:layout_height="wrap_content">
         </Spinner>
@@ -168,25 +167,40 @@
             android:text="是否服从调剂"
             android:textSize="20dp"/>
         <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:text="是"/>
             <RadioButton
+                android:id="@+id/no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:text="否"/>
         </RadioGroup>
     </LinearLayout>
+    <EditText
+        android:id="@+id/introduction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:gravity="left|top"
+        android:minLines="6"
+        android:text="个人简介"/>
     <Button
+        android:id="@+id/confirmButton"
         android:layout_width="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="确认报名"/>
+        android:text="确认报名" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
