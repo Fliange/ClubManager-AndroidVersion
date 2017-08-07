@@ -42,6 +42,8 @@ public class ChangeImageActivity extends AppCompatActivity implements View.OnCli
     private File tempFile;
 
     private SharedPreferences sp;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,12 +54,13 @@ public class ChangeImageActivity extends AppCompatActivity implements View.OnCli
         iv_img = (ImageView) findViewById(R.id.iv_img);
         bt_camera = (Button) findViewById(R.id.bt_camera);
         bt_xiangce = (Button) findViewById(R.id.bt_xiangce);
-//从SharedPreferences获取图片
+        //从SharedPreferences获取图片
         getBitmapFromSharedPreferences();
 
         bt_camera.setOnClickListener(this);
         bt_xiangce.setOnClickListener(this);
     }
+
 
     @Override
     public void onClick(View v) {
@@ -85,11 +88,10 @@ public class ChangeImageActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
-
-    /*
+/*
 * 判断sdcard是否被挂载
 */
-    private boolean hasSdcard() {
+    public boolean hasSdcard() {
         //判断ＳＤ卡手否是安装好的　　　media_mounted
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             return true;
@@ -99,9 +101,9 @@ public class ChangeImageActivity extends AppCompatActivity implements View.OnCli
     }
 
     /*
-     * 剪切图片
+     * 剪切图片,user指代调用者:0是等永恒原生调用，1是富文本调用
      */
-    private void crop(Uri uri) {
+    public void crop(Uri uri,int user) {
         // 裁剪图片意图
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, "image/*");
@@ -116,7 +118,7 @@ public class ChangeImageActivity extends AppCompatActivity implements View.OnCli
         intent.putExtra("outputFormat", "JPEG");// 图片格式
         intent.putExtra("noFaceDetection", true);// 取消人脸识别
         intent.putExtra("return-data", true);
-        // 开启一个带有返回值的Activity，请求码为PHOTO_REQUEST_CUT
+        // 开启一个带有返回值的Activity，请求码根据调用者确定
         startActivityForResult(intent, PHOTO_REQUEST_CUT);
     }
 
@@ -133,12 +135,12 @@ public class ChangeImageActivity extends AppCompatActivity implements View.OnCli
             if (data != null) {
                 // 得到图片的全路径
                 Uri uri = data.getData();
-                crop(uri);
+                crop(uri,0);
             }
         } else if (requestCode == PHOTO_REQUEST_CAREMA) {
             // 从相机返回的数据
             if (hasSdcard()) {
-                crop(Uri.fromFile(tempFile));
+                crop(Uri.fromFile(tempFile),0);
             } else {
                 Toast.makeText(ChangeImageActivity.this, "未找到存储卡，无法存储照片！", Toast.LENGTH_SHORT).show();
             }
@@ -164,7 +166,7 @@ public class ChangeImageActivity extends AppCompatActivity implements View.OnCli
     }
 
     //保存图片到SharedPreferences
-    private void saveBitmapToSharedPreferences(Bitmap bitmap) {
+    public void saveBitmapToSharedPreferences(Bitmap bitmap) {
         // Bitmap bitmap=BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
         //第一步:将Bitmap压缩至字节数组输出流ByteArrayOutputStream
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -189,13 +191,14 @@ public class ChangeImageActivity extends AppCompatActivity implements View.OnCli
      * @param imgName
      */
     public  void setImgByStr(String imgStr, String imgName) {
-        String url = "http://192.168.40.70:8080/PClubManager/loadImage";
+        String url = "http://192.168.40.72:8080/PClubManager/loadImage";
         Map<String, String> params = new HashMap<String, String>();
 
         sp=getSharedPreferences("loginInfor",MODE_PRIVATE);
         String username = sp.getString("username","");
         params.put("id",username);//因为存照片时需要用到登录人的学号所以一块传过去；
         params.put("data", imgStr);
+        params.put("time",imgName);
         OkHttp.postAsync(url, params, new OkHttp.DataCallBack() {
             @Override
             public void requestFailure(Request request, IOException e) {
@@ -209,7 +212,7 @@ public class ChangeImageActivity extends AppCompatActivity implements View.OnCli
     }
 
     //从SharedPreferences获取图片
-    private void getBitmapFromSharedPreferences(){
+    public void getBitmapFromSharedPreferences(){
         SharedPreferences sharedPreferences=getSharedPreferences("testSP", Context.MODE_PRIVATE);
         //第一步:取出字符串形式的Bitmap
         String imageString=sharedPreferences.getString("image", "");

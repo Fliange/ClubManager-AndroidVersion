@@ -1,11 +1,11 @@
 package com.nankai.clubmanager.activity;
 
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -69,7 +69,7 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
         x.view().inject(this);
         initUi();
-        //setHomePage();
+        setHomePage();
     }
 
     //初始化UI组件
@@ -107,7 +107,7 @@ public class MainActivity extends FragmentActivity {
                     contentFragment = new HomePageFragment();
                     transaction.replace(R.id.fragmentPager, contentFragment);
                     //每次会跳到首页，都要到数据库把首页要显示的内容拿出来
-                    //setHomePage();
+                    setHomePage();
                     break;
                 case R.id.view_regist:
                     mRegistView.setBigIcon(R.drawable.regist_big);
