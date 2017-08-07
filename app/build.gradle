@@ -64,3 +64,8 @@ dependencies {
     compile 'com.mxn.soul:flowingdrawer-core:2.0.0'
     compile 'com.nineoldandroids:library:2.4.0'
 }
+
+//左拉效果
+dependencies {
+    compile "com.daimajia.swipelayout:library:1.2.0@aar"
+}
