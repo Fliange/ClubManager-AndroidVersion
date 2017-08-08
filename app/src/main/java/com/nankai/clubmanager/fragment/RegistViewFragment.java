@@ -1,5 +1,6 @@
 package com.nankai.clubmanager.fragment;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -49,8 +51,6 @@ import okhttp3.Response;
 public class RegistViewFragment extends Fragment{
 
     private TextView choosebirthday;
-    private DatePicker datetoday;
-    private DatePicker birthday;
     private EditText number;
     private EditText name;
     private EditText telphone;
@@ -65,6 +65,7 @@ public class RegistViewFragment extends Fragment{
     private Button confirmRegist;
     private List<String> departmentData;//记录的是返回的所有的部门信息
     private Context context;
+    final Calendar cal=Calendar.getInstance();
     Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -103,7 +104,6 @@ public class RegistViewFragment extends Fragment{
         context=this.getActivity();
         departmentData=new ArrayList<>();
         choosebirthday = (TextView) view.findViewById(R.id.choosebirthday);
-        birthday = (DatePicker) view.findViewById(R.id.birthday);
         number= (EditText) view.findViewById(R.id.number);
         name=(EditText) view.findViewById(R.id.name);
         telphone=(EditText) view.findViewById(R.id.telphone);
@@ -175,20 +175,34 @@ public class RegistViewFragment extends Fragment{
         choosebirthday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                birthday.setVisibility(View.VISIBLE);
-                birthday.init(2017, 8, 06, new DatePicker.OnDateChangedListener() {
-                    @Override
-                    public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        int year2 = birthday.getYear();
-                        int day1 = birthday.getDayOfMonth();
-                        int month1 = birthday.getMonth();
-                        choosebirthday.setText(year2+"/"+(month1+1)+"/"+day1);
-                    }
-                });
+                new DatePickerDialog(getActivity(),
+                        listener ,
+                        cal .get(Calendar. YEAR ),
+                        cal .get(Calendar. MONTH ),
+                        cal .get(Calendar. DAY_OF_MONTH )
+                ).show();
             }
         });
         return view;
     }
+
+    // 日期选择对话框的 DateSet 事件监听器
+    private DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener(){  //
+        @Override
+        public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
+            cal .set(Calendar. YEAR , arg1);
+            cal .set(Calendar. MONTH , arg2);
+            cal .set(Calendar. DAY_OF_MONTH , arg3);
+            updateDate();
+        }
+    };
+
+    // 当 DatePickerDialog 关闭，更新日期显示
+    private void updateDate(){
+        DateFormat df = new SimpleDateFormat( "yyyy-MM-dd" );
+        choosebirthday .setText( df .format( cal .getTime()));
+    }
+
     private void exec(Request request) {
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
