@@ -79,9 +79,8 @@
             android:id="@+id/action_font"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:background="@null"
             android:contentDescription="@null"
-            android:src="@drawable/font"
+            android:background="@drawable/font"
             />
         <TextView
             android:layout_width="0dp"
