@@ -1,5 +1,6 @@
 package com.nankai.clubmanager.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,7 +12,6 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -32,17 +32,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 import jp.wasabeef.richeditor.RichEditor;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 
 
 @ContentView(R.layout.release)
-public class ReleaseActivity extends AppCompatActivity {
+public class ReleaseActivity extends Activity {
 
     @ViewInject(R.id.rich_edit)
     private RichEditor mEditor;
     @ViewInject(R.id.rich_view)
     private TextView mPreview;
-
+    @ViewInject(R.id.rich_edit_head)
+    private RichEditor editorHead;
+    @ViewInject(R.id.font_edit)
+    private View fontEdit;
+    @ViewInject(R.id.align_edit)
+    private View alignEdit;
     private ChangeImageActivity imageActivity = new ChangeImageActivity();
     private File tempFile;
     private static final int PHOTO_REQUEST_CAREMA = 1;// 拍照
@@ -50,6 +60,11 @@ public class ReleaseActivity extends AppCompatActivity {
     private static final int PHOTO_REQUEST_CUT = 3;// 结果
     private SharedPreferences sp;
     private String urlForRich;
+    //用于判断字体栏是否显示
+    private boolean fontAble = false;
+    private boolean alignAble = false;
+    //用来进行与后端通信的okHttpClient
+    private OkHttpClient okHttpClient = new OkHttpClient();
 
     //handler，在回调函数里监听，照片有没有传给服务器，要是传了，就在富文本编辑器里面显示出来
     final Handler handler = new Handler(){          // handle
@@ -71,12 +86,12 @@ public class ReleaseActivity extends AppCompatActivity {
         mEditor.setEditorHeight(200);
         mEditor.setEditorFontSize(22);
         mEditor.setTextColor(Color.RED);
-        //mEditor.setEditorBackgroundColor(Color.BLUE);
-        //mEditor.setBackgroundColor(Color.BLUE);
-        //mEditor.setBackgroundResource(R.drawable.bg);
+
         mEditor.setPadding(10, 10, 10, 10);
-        //mEditor.setBackground("https://raw.githubusercontent.com/wasabeef/art/master/chip.jpg");
-        //mEditor.setInputEnabled(false);
+
+        editorHead.setAlignLeft();
+        editorHead.setEditorFontSize(40);
+        editorHead.setHeading(1);
 
         mEditor.setOnTextChangeListener(new RichEditor.OnTextChangeListener() {
             @Override
@@ -84,7 +99,6 @@ public class ReleaseActivity extends AppCompatActivity {
                 mPreview.setText(text);
             }
         });
-
 
         findViewById(R.id.action_undo).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,11 +141,47 @@ public class ReleaseActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 激活系统图库，选择一张图片
-                Intent intent1 = new Intent(Intent.ACTION_PICK);
-                intent1.setType("image/*");
+                Intent intent = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
                 // 开启一个带有返回值的Activity，请求码为PHOTO_REQUEST_GALLERY
-                startActivityForResult(intent1, PHOTO_REQUEST_GALLERY);
-                //mEditor.insertImage("http://www.1honeywan.com/dachshund/image/7.21/7.21_3_thumb.JPG","dachshund");
+                startActivityForResult(intent, PHOTO_REQUEST_GALLERY);
+            }
+        });
+
+        findViewById(R.id.action_font).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(fontAble){
+                    fontEdit.setVisibility(View.GONE);
+                    fontEdit.setBackgroundResource(R.drawable.font);
+                    fontAble = false;
+                }
+                else {
+                    fontEdit.setVisibility(View.VISIBLE);
+                    fontEdit.setBackgroundResource(R.drawable.font2);
+                    fontAble = true;
+                }
+
+            }
+        });
+
+        findViewById(R.id.action_align).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(alignAble){
+                    alignEdit.setVisibility(View.GONE);
+                    alignEdit.setBackgroundResource(R.drawable.aligan);
+                    alignAble = false;
+                }
+                else {
+                    alignEdit.setVisibility(View.VISIBLE);
+                    alignEdit.setBackgroundResource(R.drawable.aligan2);
+                    alignAble = true;
+                }
+
+
+                //mEditor.setBlockquote();
             }
         });
 
@@ -142,27 +192,13 @@ public class ReleaseActivity extends AppCompatActivity {
             }
         });
 
+
         findViewById(R.id.action_italic).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mEditor.setItalic();
             }
         });
-
-        findViewById(R.id.action_subscript).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setSubscript();
-            }
-        });
-
-        findViewById(R.id.action_superscript).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setSuperscript();
-            }
-        });
-
         findViewById(R.id.action_strikethrough).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -204,21 +240,6 @@ public class ReleaseActivity extends AppCompatActivity {
                 mEditor.setHeading(4);
             }
         });
-
-        findViewById(R.id.action_heading5).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setHeading(5);
-            }
-        });
-
-        findViewById(R.id.action_heading6).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.setHeading(6);
-            }
-        });
-
         findViewById(R.id.action_txt_color).setOnClickListener(new View.OnClickListener() {
             private boolean isChanged;
 
@@ -238,7 +259,6 @@ public class ReleaseActivity extends AppCompatActivity {
                 isChanged = !isChanged;
             }
         });
-
         findViewById(R.id.action_indent).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -274,41 +294,6 @@ public class ReleaseActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.action_blockquote).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //mEditor.setBlockquote();
-            }
-        });
-
-        findViewById(R.id.action_insert_bullets).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //mEditor.setBullets();
-            }
-        });
-
-        findViewById(R.id.action_insert_numbers).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //mEditor.setNumbers();
-            }
-        });
-
-
-
-        findViewById(R.id.action_insert_link).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mEditor.insertLink("https://github.com/wasabeef", "wasabeef");
-            }
-        });
-        findViewById(R.id.action_insert_checkbox).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //mEditor.insertTodo();
-            }
-        });
     }
 
     @Override
@@ -398,17 +383,18 @@ public class ReleaseActivity extends AppCompatActivity {
         Long time = System.currentTimeMillis();
         imgName = time.toString();
         //给富文本返回的url
-        urlForRich = "http://192.168.40.72:8080/PClubManager/images/head/"+imgName+".png";
+        urlForRich = "http://192.168.40.72:8080/PClubManager/images/head/" + imgName + ".png";
 
-        sp=getSharedPreferences("loginInfor",MODE_PRIVATE);
-        String username = sp.getString("username","");
-        params.put("id",imgName);//照片id，使用时间
+        sp = getSharedPreferences("loginInfor", MODE_PRIVATE);
+        String username = sp.getString("username", "");
+        params.put("id", imgName);//照片id，使用时间
         params.put("data", imgStr);
         OkHttp.postAsync(url, params, new OkHttp.DataCallBack() {
             @Override
             public void requestFailure(Request request, IOException e) {
                 Log.i("上传失败", "失败" + request.toString() + e.toString());
             }
+
             @Override
             public void requestSuccess(String result) throws Exception {
                 Log.i("上传成功", result);
@@ -417,6 +403,57 @@ public class ReleaseActivity extends AppCompatActivity {
                 m.what = 1;
                 m.obj = urlForRich;
                 handler.sendMessage(m);
+            }
+        });
+    }
+
+    public void release(View view){
+        String ActivityName = editorHead.getHtml();
+        String ActivityContent = mEditor.getHtml();
+
+        //使用post的方式，向后端action发起传输请求
+        FormBody.Builder builder1 = new FormBody.Builder();
+
+        FormBody formBody = builder1.add("ActivityName", ActivityName)
+                .add("ActivityContent",ActivityContent)
+                .build();
+
+        Request.Builder builder = new Request.Builder();
+        Request request = builder.url("http://192.168.40.72:8080/PClubManager/Act_addActivityForAndroid")
+                .post(formBody)
+                .build();
+        exec(request);
+    }
+
+    //将发送request的过程和回调函数的定义封装成一个方法
+    private void exec(Request request) {
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.i("失败：","-----"+e);
+                final String error = e.toString();
+                ReleaseActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //chatroomContent.setText(error);
+                        Log.i("error--------",error);
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.i("成功：","-----");
+                //从服务器传回来的json字符串
+                final String msg = response.body().string();
+
+                ReleaseActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        //chatroomContent.setText(msg);
+                        Log.i("成功--------",msg);
+                    }
+                });
             }
         });
     }
