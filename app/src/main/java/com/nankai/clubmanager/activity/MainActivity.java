@@ -54,8 +54,8 @@ public class MainActivity extends FragmentActivity {
     @ViewInject(R.id.view_manage)
     private NaviView mManageView;//管理
 
-    @ViewInject(R.id.view_regist)
-    private NaviView mRegistView;//报名
+/*    @ViewInject(R.id.view_regist)
+    private NaviView mRegistView;//报名*/
 
 
     private ListView homepageListview;//主界面显示活动的
@@ -77,14 +77,14 @@ public class MainActivity extends FragmentActivity {
 
         mHomePageView.setOnClickListener(itemClick);
 
-        mRegistView.setOnClickListener(itemClick);
+        /*mRegistView.setOnClickListener(itemClick);*/
 
         mFoundView.setOnClickListener(itemClick);
 
         mManageView.setOnClickListener(itemClick);
 
-        mHomePageView.setBigIcon(R.drawable.home_page_big);
-        mHomePageView.setSmallIcon(R.drawable.home_page_small);
+        mHomePageView.setBigIcon(R.drawable.home_icon);
+        mHomePageView.setSmallIcon(R.drawable.home_icon);
         //fragment管理者
         fragmentManager = getSupportFragmentManager();
         transaction = fragmentManager.beginTransaction();
@@ -102,26 +102,28 @@ public class MainActivity extends FragmentActivity {
             resetIcon();
             switch (view.getId()) {
                 case R.id.view_homepage:
-                    mHomePageView.setBigIcon(R.drawable.home_page_big);
-                    mHomePageView.setSmallIcon(R.drawable.home_page_small);
+                    mHomePageView.setBigIcon(R.drawable.home_icon_clicked);
+                    mHomePageView.setSmallIcon(R.drawable.home_icon_clicked);
                     contentFragment = new HomePageFragment();
                     transaction.replace(R.id.fragmentPager, contentFragment);
                     //每次会跳到首页，都要到数据库把首页要显示的内容拿出来
                     setHomePage();
                     break;
-                case R.id.view_regist:
-                    mRegistView.setBigIcon(R.drawable.regist_big);
-                    mRegistView.setSmallIcon(R.drawable.regist_small);
+                /*case R.id.view_regist:
+                    mRegistView.setBigIcon(R.drawable.all_icon_clicked);
+                    mRegistView.setSmallIcon(R.drawable.all_icon_clicked);
                     contentFragment = new RegistViewFragment();
                     transaction.replace(R.id.fragmentPager, contentFragment);
-                    break;
+                    break;*/
                 case R.id.view_found:
-                    mFoundView.setBigIcon(R.drawable.found);
+                    mFoundView.setBigIcon(R.drawable.discover_icon_clicked);
+                    mFoundView.setSmallIcon(R.drawable.discover_icon_clicked);
                     contentFragment = new FoundViewFragment();
                     transaction.replace(R.id.fragmentPager, contentFragment);
                     break;
                 case R.id.view_manage:
-                    mManageView.setBigIcon(R.drawable.manage);
+                    mManageView.setBigIcon(R.drawable.all_icon_clicked);
+                    mManageView.setSmallIcon(R.drawable.all_icon_clicked);
                     contentFragment = new ManageViewFragment();
                     transaction.replace(R.id.fragmentPager, contentFragment);
                     break;
@@ -133,16 +135,17 @@ public class MainActivity extends FragmentActivity {
 
 
     private void resetIcon() {
-        mHomePageView.setBigIcon(R.drawable.pre_homepage_big);
-        mHomePageView.setSmallIcon(R.drawable.pre_homepage_small);
+        mHomePageView.setBigIcon(R.drawable.home_icon);
+        mHomePageView.setSmallIcon(R.drawable.home_icon);
 
-        mRegistView.setBigIcon(R.drawable.pre_regist_big);
-        mRegistView.setSmallIcon(R.drawable.pre_regist_small);
+        /*mRegistView.setBigIcon(R.drawable.pre_regist_big);
+        mRegistView.setSmallIcon(R.drawable.pre_regist_small);*/
 
-        mFoundView.setBigIcon(R.drawable.pre_found_big);
-        mFoundView.setSmallIcon(R.drawable.pre_found_small);
+        mFoundView.setBigIcon(R.drawable.discover_icon);
+        mFoundView.setSmallIcon(R.drawable.discover_icon);
 
-        mManageView.setBigIcon(R.drawable.pre_manage);
+        mManageView.setBigIcon(R.drawable.all_icon);
+        mManageView.setSmallIcon(R.drawable.all_icon);
     }
 
     //用于从数据库拿数据 并显示到首页

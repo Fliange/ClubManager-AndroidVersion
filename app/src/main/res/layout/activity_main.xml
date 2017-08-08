@@ -23,6 +23,7 @@
         android:paddingBottom="4dp"
         android:elevation="4dp">
 
+        <!--主页导航-->
         <com.nankai.library.NaviView
             android:id="@+id/view_homepage"
             android:layout_width="0dp"
@@ -30,56 +31,56 @@
             android:layout_weight="1"
             android:onClick="onClick"
             android:gravity="center"
-            app:bigIconSrc="@drawable/pre_homepage_big"
-            app:iconWidth="50dp"
-            app:iconHeight="50dp"
+            app:bigIconSrc="@drawable/home_icon"
+            app:smallIconSrc="@drawable/home_icon"
+            app:iconWidth="30dp"
+            app:iconHeight="30dp"
             app:range="1.2">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:text="主页"/>
-
+                android:textSize="9sp"
+                android:text="HOME"/>
         </com.nankai.library.NaviView>
 
+        <!--发现导航-->
         <com.nankai.library.NaviView
             android:id="@+id/view_found"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onClick"
-            app:bigIconSrc="@drawable/pre_found_big"
-            app:smallIconSrc="@drawable/pre_found_small"
-            app:iconWidth="50dp"
-            app:iconHeight="50dp">
-
+            app:bigIconSrc="@drawable/discover_icon"
+            app:smallIconSrc="@drawable/discover_icon"
+            app:iconWidth="30dp"
+            app:iconHeight="30dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:text="发现"/>
-
+                android:textSize="9sp"
+                android:text="DISCOVER"/>
         </com.nankai.library.NaviView>
 
+        <!--管理导航-->
         <com.nankai.library.NaviView
             android:id="@+id/view_manage"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onClick"
-            app:bigIconSrc="@drawable/pre_manage"
-            app:iconWidth="50dp"
-            app:iconHeight="50dp">
-
+            app:bigIconSrc="@drawable/all_icon"
+            app:smallIconSrc="@drawable/all_icon"
+            app:iconWidth="30dp"
+            app:iconHeight="30dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:text="管理" />
+                android:textSize="9sp"
+                android:text="MANAGE" />
         </com.nankai.library.NaviView>
 
-        <com.nankai.library.NaviView
+
+<!--        <com.nankai.library.NaviView
             android:id="@+id/view_regist"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -87,16 +88,14 @@
             android:onClick="onClick"
             app:bigIconSrc="@drawable/pre_regist_big"
             app:smallIconSrc="@drawable/pre_regist_small"
-            app:iconWidth="50dp"
-            app:iconHeight="50dp">
-
+            app:iconWidth="30dp"
+            app:iconHeight="30dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
                 android:text="报名" />
-
-        </com.nankai.library.NaviView>
+        </com.nankai.library.NaviView>-->
 
     </LinearLayout>
 
