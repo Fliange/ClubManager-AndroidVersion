@@ -3,54 +3,34 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="活动名称："
-        android:textSize="15sp"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"/>
     <LinearLayout
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/homepage_listview_bg"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center">
-        <ImageView
-            android:id="@+id/item_img"
-            android:paddingBottom="10dip"
-            android:paddingLeft="10dip"
-            android:paddingRight="10dip"
-            android:paddingTop="10dip"
-            android:src="@drawable/test_pic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        </LinearLayout>
-    <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/homepage_listview_bg2"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:background="#ffffff"
+        android:orientation="vertical">
         <TextView
-            android:id="@+id/item_text"
-            android:paddingBottom="10dip"
-            android:paddingLeft="10dip"
-            android:paddingRight="10dip"
-            android:paddingTop="10dip"
+            android:id="@+id/item_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="这是活动简介。。。"/>
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="我用什么留住你"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/item_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="文 | 博尔赫斯"/>
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/item_img"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"/>
+        <TextView
+            android:id="@+id/item_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="200dp"
-        android:text="2017-08-08   学生会宣传部"/>
-    <View
-        android:layout_width="350dp"
-        android:layout_height="1px"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dip"
-        android:background="#000000" />
 </LinearLayout>
