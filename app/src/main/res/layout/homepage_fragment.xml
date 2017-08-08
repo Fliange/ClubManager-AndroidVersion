@@ -29,11 +29,12 @@
             </LinearLayout>
         </ScrollView>
 
-        <!--menu-->
+        <!--侧滑菜单-->
         <com.mxn.soul.flowingdrawer_core.FlowingMenuLayout
             android:id="@+id/menulayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#FFFFFF">
 
             <LinearLayout
                 android:id="@+id/id_container_menu"
