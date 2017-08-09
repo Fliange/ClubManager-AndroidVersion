@@ -438,9 +438,9 @@ public class ReleaseActivity extends Activity {
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, "image/*");
         intent.putExtra("crop", "true");
-        // 裁剪框的比例，1：1
-        //intent.putExtra("aspectX", 1);
-        //intent.putExtra("aspectY", 1.375);
+        // 裁剪框的比例，746：404
+        intent.putExtra("aspectX", 746);
+        intent.putExtra("aspectY", 404);
         // 裁剪后输出图片的尺寸大小
         //intent.putExtra("outputX", 1024*1);
         //intent.putExtra("outputY", 1024*1.375);

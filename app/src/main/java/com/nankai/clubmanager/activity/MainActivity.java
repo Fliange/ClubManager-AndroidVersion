@@ -1,5 +1,6 @@
 package com.nankai.clubmanager.activity;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -63,6 +65,8 @@ public class MainActivity extends FragmentActivity {
 
     //用来进行与后端通信的okHttpClient
     private OkHttpClient okHttpClient = new OkHttpClient();
+    //
+    private List<Map<String,Object>> list_map = new ArrayList<Map<String,Object>>(); //定义一个适配器对象
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -190,30 +194,25 @@ public class MainActivity extends FragmentActivity {
                  */
                 List<Map<String, Object>> arrayList = JSON.parseObject(msg,
                         new TypeReference<List<Map<String, Object>>>() {});
-                List<Map<String,Object>> list_map = new ArrayList<Map<String,Object>>(); //定义一个适配器对象
+
                 //遍历json数组,将图片对象搞进去
 
-                String activityName, activityPic,IMAGE_URL,activityOrganization,activityIntroduction;
+                String activityName, activityPic,IMAGE_URL,activityOrganization,activityIntroduction,activityContent;
+                int activityId;
                 Drawable drawable;
                 for (int i = 0; i < arrayList.size(); i++) {
                     Map<String, Object> activity = arrayList.get(i);
-                    activityName = (String) activity.get("ActivityName");
                     activityPic = (String) activity.get("ActivityPicture");
-                    activityOrganization = (String) activity.get("ActivityOrganization");
-                    activityIntroduction = (String) activity.get("ActivityIntroduction");
                     IMAGE_URL = "http://192.168.40.72:8080/PClubManager/images/"+activityPic;
                     drawable = loadImageFromNetwork(IMAGE_URL);
                     activity.put("pic",drawable);
-                    activity.put("ActivityName",activityName);
-                    activity.put("activityOrganization",activityOrganization);
-                    activity.put("activityIntroduction",activityIntroduction);
                     list_map.add(activity);
                 }
                 final SimpleAdapter simpleAdapter = new SimpleAdapter(
                         MainActivity.this,/*传入一个上下文作为参数*/
                         list_map,         /*传入相对应的数据源，这个数据源不仅仅是数据而且还是和界面相耦合的混合体。*/
                         R.layout.homepage_list_item, /*设置具体某个items的布局，需要是新的布局，而不是ListView控件的布局*/
-                        new String[]{"pic","ActivityName","activityOrganization","activityIntroduction"}, /*传入上面定义的键值对的键名称,会自动根据传入的键找到对应的值*/
+                        new String[]{"pic","ActivityName","ActivityOrganization","ActivityIntroduction"}, /*传入上面定义的键值对的键名称,会自动根据传入的键找到对应的值*/
                         new int[]{R.id.item_img,R.id.item_title,R.id.item_author,R.id.item_text});/*传入items布局文件中需要指定传入的控件，这里直接上id即可*/
 
 
@@ -256,6 +255,24 @@ public class MainActivity extends FragmentActivity {
                     public void run() {
                         homepageListview = (ListView) findViewById(R.id.homepage_listview);
                         homepageListview.setAdapter(simpleAdapter);
+                        homepageListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                /*TextView activityDetailName = (TextView) view.findViewById(R.id.activity_detail_Name);
+                                String s = activityDetailName.getText().toString();*/
+                                Map<String,Object> map = list_map.get(position);
+                                int actId = (int) map.get("ActivityId");
+                                Log.i("活动ID-----",""+actId);
+                                Intent intent = new Intent(MainActivity.this,ActDetailActivity.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putString("ActivityPicture", (String) map.get("ActivityPicture"));
+                                bundle.putString("ActivityName", (String) map.get("ActivityName"));
+                                bundle.putString("ActivityContent", (String) map.get("ActivityContent"));
+                                bundle.putString("ActivityOrganization", (String) map.get("ActivityOrganization"));
+                                intent.putExtras(bundle);
+                                startActivity(intent);
+                            }
+                        });
                     }
                 });
             }
