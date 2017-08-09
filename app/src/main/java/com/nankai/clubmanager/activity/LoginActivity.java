@@ -24,6 +24,8 @@ import android.widget.Toast;
 import com.nankai.clubmanager.JellyInterpolator;
 import com.nankai.clubmanager.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -82,20 +84,26 @@ public class LoginActivity extends Activity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if(msg.what == 1){
-                String result = (String) msg.obj;//返回他们的职位
+                String result = (String) msg.obj;//返回他们的职位和所在的部门
                 if(result.equals("fail")){
                     Toast.makeText(LoginActivity.this,"账号或密码错误",Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(LoginActivity.this,LoginActivity.class);
                     startActivity(intent);
                 }else{
+                    //管理员或者是部门内部的人登录，把他们的职位和所在的部门存起来
                     Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(LoginActivity.this,MainActivity.class);
                     startActivity(intent);
-                    //管理员或者是部门内部的人登录，把他们的职位存起来
-                    SharedPreferences.Editor editor = sp.edit();
-                    editor.putString("position",result);
-                    editor.putBoolean("status",true);//登录的状态已经登录
-                    editor.commit();
+                    try {
+                        JSONObject obj=new JSONObject(result);
+                        SharedPreferences.Editor editor = sp.edit();
+                        editor.putString("position",obj.getString("position"));//把职位存起来
+                        editor.putInt("department",obj.getInt("department"));//把所在的部门存起来
+                        editor.putBoolean("status",true);//登录的状态已经登录
+                        editor.commit();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
