@@ -21,6 +21,7 @@ import com.nankai.clubmanager.fragment.FoundViewFragment;
 import com.nankai.clubmanager.fragment.HomePageFragment;
 import com.nankai.clubmanager.fragment.ManageViewFragment;
 import com.nankai.library.NaviView;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -38,6 +39,7 @@ import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+
 
 @ContentView(R.layout.activity_main)
 public class MainActivity extends FragmentActivity {
@@ -213,6 +215,25 @@ public class MainActivity extends FragmentActivity {
                         new String[]{"pic","ActivityName","ActivityOrganization","ActivityIntroduction"}, /*传入上面定义的键值对的键名称,会自动根据传入的键找到对应的值*/
                         new int[]{R.id.item_img,R.id.item_title,R.id.item_author,R.id.item_text});/*传入items布局文件中需要指定传入的控件，这里直接上id即可*/
 
+
+                        //加载页面
+                        try
+                        {
+                            Thread.currentThread().sleep(2000);//毫秒
+                        }
+                        catch(Exception e){}
+                        MainActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                AVLoadingIndicatorView avi;
+                                avi= (AVLoadingIndicatorView) findViewById(R.id.avi);
+                                avi.hide();
+                            }
+                        });
+
+
+
+                // or avi.smoothToHide();
                 //ViewBinder该类可以帮助SimpleAdapter加载图片(Drawable)
                 simpleAdapter.setViewBinder(new SimpleAdapter.ViewBinder() {
                     @Override

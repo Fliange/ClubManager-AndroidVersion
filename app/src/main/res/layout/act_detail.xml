@@ -8,22 +8,23 @@
     tools:context="com.nankai.clubmanager.activity.ActDetailActivity">
     <include
         layout="@layout/title1" />
+
     <LinearLayout
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/activity_detail_Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="运动会"
+            android:layout_gravity="center"
             android:paddingBottom="15dp"
-            android:paddingTop="15dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
-            android:layout_gravity="center"
+            android:paddingTop="15dp"
             android:textSize="30dp" />
 
         <View
@@ -36,59 +37,60 @@
             android:id="@+id/activity_detail_Picture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/test_pic"
             android:layout_gravity="center"
             android:paddingBottom="15dp"
-            android:paddingTop="15dp"
             android:paddingLeft="15dp"
-            android:paddingRight="15dp"/>
+            android:paddingRight="15dp"
+            android:paddingTop="15dp" />
+
         <View
             android:layout_width="250dp"
             android:layout_height="1px"
             android:layout_gravity="center"
             android:background="#000000" />
 
-        <TextView
-            android:id="@+id/activity_detail_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="15dp"
-            android:paddingTop="15dp"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:text="这里是活动详情。。。。"/>
+        <jp.wasabeef.richeditor.RichEditor
+            android:id="@+id/rich_activity_detail_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
         <View
             android:layout_width="250dp"
             android:layout_height="1px"
             android:layout_gravity="center"
             android:background="#000000" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="35dp"
+                android:layout_marginTop="10dp"
                 android:text="评论"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
+
             <ImageView
                 android:id="@+id/thumb_up"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/pre_thumb_up"
+                android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
-                android:layout_gravity="center"/>
+                android:src="@drawable/pre_thumb_up" />
             <!--点赞数-->
             <TextView
                 android:id="@+id/thumb_up_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="158"/>
+                android:text="158" />
         </LinearLayout>
+
         <View
             android:layout_width="250dp"
             android:layout_height="1px"
@@ -98,8 +100,7 @@
         <ListView
             android:id="@+id/activity_comment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ></ListView>
+            android:layout_height="wrap_content"></ListView>
 
     </LinearLayout>
 </LinearLayout>
