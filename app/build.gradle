@@ -83,6 +83,9 @@ dependencies {
 
 
 dependencies {
+    compile 'com.android.support.constraint:constraint-layout:+'
+}
+dependencies {
     // https://mvnrepository.com/artifact/com.nostra13.universalimageloader/universal-image-loader
     compile group: 'com.nostra13.universalimageloader', name: 'universal-image-loader', version: '1.8.6'
 }
