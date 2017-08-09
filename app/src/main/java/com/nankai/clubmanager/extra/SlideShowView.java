@@ -350,4 +350,7 @@ public class SlideShowView extends FrameLayout {
         // Initialize ImageLoader with configuration.
         ImageLoader.getInstance().init(config);
     }
+
+
+
 }
