@@ -8,8 +8,8 @@
         android:layout_marginLeft="20dp">
         <com.nankai.library.RoundImageView
             android:id="@+id/item_img_manage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_gravity="center_vertical"
             android:src="@drawable/head_image"/>
         <TextView
@@ -17,8 +17,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="50dp"
-            android:text="标题1"/>
+            android:layout_marginLeft="50dp" />
+        <TextView
+            android:id="@+id/item_number_manage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="50dp" />
+
     </LinearLayout>
 
 </LinearLayout>

@@ -22,14 +22,15 @@
             android:paddingLeft="30dip"
             android:paddingRight="30dip"
             android:paddingTop="4dip"
-            android:text="搜索"
+            android:hint="搜索"
             android:textSize="20sp" />
         <ImageView
+            android:id="@+id/search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/search"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="300dp"/>
+            android:layout_marginLeft="300dp" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
