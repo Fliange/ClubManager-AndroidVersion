@@ -4,26 +4,33 @@ import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nankai.clubmanager.R;
 
 import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.io.IOException;
 import java.net.URL;
 
+import jp.wasabeef.richeditor.RichEditor;
+
 @ContentView(R.layout.act_detail)
 public class ActDetailActivity extends Activity {
     @ViewInject(R.id.activity_detail_Name)
-    private TextView activityDetailName;
+    private TextView activityDetailName;/*
     @ViewInject(R.id.activity_detail_content)
-    private TextView activityDetailContent;
+    private TextView activityDetailContent;*/
     @ViewInject(R.id.activity_detail_Picture)
     private ImageView activityDetailPicture;
+    @ViewInject(R.id.rich_activity_detail_content)
+    private RichEditor richActivityDetailContent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +44,11 @@ public class ActDetailActivity extends Activity {
         String ActivityContent = bundle.getString("ActivityContent");
         String ActivityOrganization = bundle.getString("ActivityOrganization");
 
-        activityDetailName.setText(ActivityName);
-        activityDetailContent.setText(ActivityContent);
+        activityDetailName.setText(ActivityName);/*
+        activityDetailContent.setText(Html.fromHtml(ActivityContent));*/
+        richActivityDetailContent.setHtml(ActivityContent);
+        richActivityDetailContent.setFocusable(false);
+        richActivityDetailContent.setFocusableInTouchMode(false);
 
         //通过图片名字，将图片对象搞进去,新开线程
         final String IMAGE_URL = "http://192.168.40.72:8080/PClubManager/images/"+ActivityPicture;
@@ -57,10 +67,14 @@ public class ActDetailActivity extends Activity {
                 });
             }
         }).start();
-
-
     }
 
+    //返回方法
+    @Event(value = {R.id.back_activity},type = View.OnClickListener.class)
+    private void doEvent(View view)
+    {
+        finish();
+    }
     //获取图片的方法
     private Drawable loadImageFromNetwork(String imageUrl)
     {
