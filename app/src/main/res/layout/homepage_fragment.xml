@@ -17,20 +17,15 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <com.nankai.clubmanager.extra.SlideShowView
-                    android:id="@+id/slideshowView"
-                    android:layout_width="fill_parent"
-                    android:layout_height="180dp" />
                 <ListView
                     android:layout_width="match_parent"
-                    android:layout_height="500dp"
-                    android:layout_below="@+id/slideshowView"
+                    android:layout_height="520dp"
                     android:id="@+id/homepage_listview">
                 </ListView>
-            </RelativeLayout>
+            </LinearLayout>
         </ScrollView>
 
     <!--侧滑菜单-->
