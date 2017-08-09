@@ -13,21 +13,22 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.ChatRoomActivity" />
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.MainActivity"></activity>
+        <activity
+            android:name=".activity.ReleaseActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".activity.ChangeImageActivity" />
+        <activity android:name=".activity.FirstWelcomeActivity"></activity>
+        <activity android:name=".activity.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.ReleaseActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".activity.ChangeImageActivity"></activity>
-        <activity android:name=".extra.SlideShowView"></activity>
     </application>
 
 </manifest>

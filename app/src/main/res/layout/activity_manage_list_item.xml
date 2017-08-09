@@ -19,19 +19,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         </LinearLayout>
+
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
+
         <TextView
             android:id="@+id/item_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:paddingBottom="10dip"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="这是活动简介。。。"/>
+            android:text="这是活动简介。。。" />
     </LinearLayout>
 
     <View
