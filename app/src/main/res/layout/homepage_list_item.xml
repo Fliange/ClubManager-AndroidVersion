@@ -8,29 +8,80 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="#ffffff"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="3dp">
         <TextView
             android:id="@+id/item_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
-            android:text="我用什么留住你"
-            android:textSize="20sp" />
+            android:layout_marginBottom="5dp"
+            android:textColor="#333333"
+            android:text="海的下面什么都没有"
+            android:textSize="15sp" />
         <TextView
             android:id="@+id/item_author"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="文 | 博尔赫斯"/>
+            android:layout_marginLeft="13dp"
+            android:text="文 | 博尔赫斯"
+            android:textSize="11sp"/>
         <ImageView
             android:layout_marginTop="5dp"
             android:id="@+id/item_img"
             android:layout_width="match_parent"
-            android:layout_height="220dp"/>
+            android:layout_height="210dp"/>
         <TextView
             android:id="@+id/item_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:textSize="11sp"
+            android:textColor="#666666"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginBottom="3dp"
+            android:text="我父亲的父亲，阵亡于布宜诺斯艾利斯的边境，两颗子弹射穿了他的"
+            android:textSize="11sp"
+            android:textColor="#666666"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginBottom="14dp"
+            android:text="胸膛，死的时候蓄着胡子。 "
+            android:textSize="11sp"
+            android:textColor="#666666"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="2017年8月9日"
+                android:textSize="9sp"
+                android:textColor="#999999"/>
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginLeft="235dp"
+                android:src="@drawable/like_icon_homepage" />
+            <ImageView
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/collection_icon_homepage"/>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
