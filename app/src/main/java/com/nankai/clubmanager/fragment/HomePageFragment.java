@@ -17,7 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,7 +44,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class HomePageFragment extends Fragment{
 
-    private ImageButton imageButton;
+    private ImageView imageView;
     private TextView changePassword;
     private TextView personalInfo;
     private TextView myDepartments;
@@ -74,14 +74,14 @@ public class HomePageFragment extends Fragment{
         changePassword= (TextView) view.findViewById(R.id.modify_password);
         personalInfo=(TextView) view.findViewById(R.id.modify_information);
         myDepartments=(TextView) view.findViewById(R.id.myapartment);
-        myCollect=(TextView) view.findViewById(R.id.mycollect);
-        exit=(TextView) view.findViewById(R.id.exit);
+        myCollect=(TextView) view.findViewById(R.id.mycollection);
+        exit=(TextView) view.findViewById(R.id.logout);
 
         sp1=getActivity().getSharedPreferences("loginInfor",MODE_PRIVATE);
         //点击头像实现更换头像的功能
-        imageButton= (ImageButton) view.findViewById(R.id.myphoto);
+        imageView= (ImageView) view.findViewById(R.id.myphoto);
         initView();
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder=new AlertDialog.Builder(HomePageFragment.this.getActivity());
@@ -129,9 +129,9 @@ public class HomePageFragment extends Fragment{
             case R.id.myapartment:
                 //sp1.getInt("department",0);//这里要把部门的id传给部门首页那个activity
                 break;
-            case R.id.mycollect:
+            case R.id.mycollection:
                 break;
-            case R.id.exit:
+            case R.id.logout:
                 SharedPreferences.Editor editor=sp.edit();
                 editor.putBoolean("status",false);//登录状态改为未登录
                 editor.commit();
@@ -202,7 +202,7 @@ public class HomePageFragment extends Fragment{
                 /**
                  * 获得图片
                  */
-                imageButton.setImageBitmap(bitmap);
+                imageView.setImageBitmap(bitmap);
                 //保存到SharedPreferences
                 saveBitmapToSharedPreferences(bitmap);
             }
@@ -270,13 +270,13 @@ public class HomePageFragment extends Fragment{
         //第二步:利用Base64将字符串转换为ByteArrayInputStream
         byte[] byteArray= Base64.decode(imageString, Base64.DEFAULT);
         if(byteArray.length==0){
-            imageButton.setImageResource(R.mipmap.ic_launcher);
+            imageView.setImageResource(R.mipmap.ic_launcher);
         }else{
             ByteArrayInputStream byteArrayInputStream=new ByteArrayInputStream(byteArray);
 
             //第三步:利用ByteArrayInputStream生成Bitmap
             Bitmap bitmap= BitmapFactory.decodeStream(byteArrayInputStream);
-            imageButton.setImageBitmap(bitmap);
+            imageView.setImageBitmap(bitmap);
         }
 
     }
