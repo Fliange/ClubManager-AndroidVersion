@@ -14,19 +14,19 @@
         android:orientation="vertical"
         tools:context="com.nankai.clubmanager.fragment.HomePageFragment">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+
             <LinearLayout
+                android:layout_marginTop="0dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ListView
                     android:layout_width="match_parent"
-                    android:layout_height="520dp"
+                    android:layout_height="wrap_content"
+
                     android:id="@+id/homepage_listview">
                 </ListView>
             </LinearLayout>
-        </ScrollView>
+
 
     <!--侧滑菜单-->
     <com.mxn.soul.flowingdrawer_core.FlowingMenuLayout
@@ -130,10 +130,3 @@
         </com.mxn.soul.flowingdrawer_core.FlowingMenuLayout>
 
     </com.mxn.soul.flowingdrawer_core.FlowingDrawer>
-
-
-
-
-
-
-

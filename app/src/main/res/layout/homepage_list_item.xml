@@ -27,28 +27,39 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:layout_marginLeft="13dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginBottom="5dp"
             android:textColor="#333333"
-            android:text="海的下面什么都没有"
-            android:textSize="15sp" />
+            android:textSize="17sp" />
 
         <!--发布者-->
-        <TextView
-            android:id="@+id/item_author"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="3dp"
-            android:layout_marginLeft="15dp"
-            android:text="文 | 博尔赫斯"
-            android:textSize="11sp"/>
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="文 | "
+                android:textColor="#999999"
+                android:textSize="13sp"/>
+            <TextView
+                android:id="@+id/item_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#999999"
+                android:textSize="13sp"/>
+        </LinearLayout>
 
         <!--活动照片-->
         <ImageView
             android:layout_marginTop="10dp"
             android:layout_marginBottom="3dp"
             android:id="@+id/item_img"
-            android:layout_width="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="335dp"
             android:layout_height="175dp"/>
 
         <!--活动简介-->
@@ -56,31 +67,14 @@
             android:id="@+id/item_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:textSize="11sp"
+            android:layout_marginTop="10dp"
+            android:textSize="13sp"
+            android:lineSpacingExtra="5dp"
             android:textColor="#666666"/>
 
-        <!--假装有活动简介，只是用来尝试排版的-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="3dp"
-            android:text="我父亲的父亲，阵亡于布宜诺斯艾利斯的边境，两颗子弹射穿了他的"
-            android:textSize="11sp"
-            android:textColor="#666666"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:text="胸膛，死的时候蓄着胡子。 "
-            android:textSize="11sp"
-            android:textColor="#666666"/>
 
         <!--底部-->
         <LinearLayout
@@ -92,20 +86,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="20dp"
                 android:text="2017年8月9日"
                 android:textSize="9sp"
                 android:textColor="#999999"/>
             <!--点赞-->
             <ImageView
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:layout_marginLeft="235dp"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_marginLeft="220dp"
                 android:src="@drawable/like_icon_homepage" />
             <!--收藏-->
             <ImageView
-                android:layout_width="13dp"
-                android:layout_height="13dp"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/collection_icon_homepage"/>
         </LinearLayout>

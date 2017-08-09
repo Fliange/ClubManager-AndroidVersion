@@ -29,6 +29,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.ReleaseActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".activity.ChangeImageActivity"></activity>
+        <activity android:name=".extra.SlideShowView"></activity>
     </application>
 
 </manifest>

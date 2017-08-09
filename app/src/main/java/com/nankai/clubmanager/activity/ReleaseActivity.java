@@ -15,12 +15,22 @@ import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nankai.clubmanager.R;
 import com.nankai.clubmanager.extra.OkHttp;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -28,7 +38,9 @@ import org.xutils.x;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import jp.wasabeef.richeditor.RichEditor;
@@ -53,6 +65,14 @@ public class ReleaseActivity extends Activity {
     private View fontEdit;
     @ViewInject(R.id.align_edit)
     private View alignEdit;
+
+    private SubmitActivity submitActivity;//弹出框
+    private Spinner activityHoldOrganization;
+    private TextView activityConfirmButton;
+    private TextView activityCancelButton;
+    private EditText activityTime;
+    private EditText activityIntroduction;
+
     private ChangeImageActivity imageActivity = new ChangeImageActivity();
     private File tempFile;
     private static final int PHOTO_REQUEST_CAREMA = 1;// 拍照
@@ -65,6 +85,12 @@ public class ReleaseActivity extends Activity {
     private boolean alignAble = false;
     //用来进行与后端通信的okHttpClient
     private OkHttpClient okHttpClient = new OkHttpClient();
+    //记录的是返回的所有的部门信息
+    private List<String> departmentData = new ArrayList<String>();
+    //封面
+    private ImageView coverPic;
+    private String coverPicName = "a";
+    private TextView coverName;
 
     //handler，在回调函数里监听，照片有没有传给服务器，要是传了，就在富文本编辑器里面显示出来
     final Handler handler = new Handler(){          // handle
@@ -72,16 +98,88 @@ public class ReleaseActivity extends Activity {
             switch (msg.what) {
                 case 1:
                     mEditor.insertImage(msg.obj.toString(),"dashund");
+                case 2: //返回的是所有的部门
+                    String result = (String) msg.obj;
+                    try {
+                        JSONArray array=new JSONArray(result);
+                        //把返回的json转化成list
+                        for(int i=0;i<array.length();i++){
+                            JSONObject obj=array.getJSONObject(i);
+                            departmentData.add(obj.getInt("departmentId")+"  "+obj.getString("departmentOrg")+obj.getString("departmentName"));
+                        }
+                        ArrayAdapter adapter = new ArrayAdapter(ReleaseActivity.this,android.R.layout.simple_list_item_single_choice,departmentData);
+                        activityHoldOrganization.setAdapter(adapter);
+
+
+                        //activityHoldOrganization.setBackgroundColor(R.color.colorRichEdit);
+                       activityHoldOrganization.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                           @Override
+                           public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                               Log.i("position------",""+position);
+                               TextView tv = (TextView) view;
+                               String org = ((TextView) view).getText().toString().substring(3);
+                               tv.setText(org);
+                               tv.setTextColor(Color.BLACK);
+                               tv.setTextSize(16);
+                           }
+
+                           @Override
+                           public void onNothingSelected(AdapterView<?> parent) {
+
+                           }
+                       });
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
             }
             super.handleMessage(msg);
         }
     };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.release);
         x.view().inject(this);
+
+        //对话框对象
+        submitActivity = new SubmitActivity(ReleaseActivity.this,R.style.Base_Theme_AppCompat_Dialog_Alert, new SubmitActivity.LeaveMyDialogListener() {
+            //监听对话框点击事件
+            @Override
+            public void onClick(View view) {
+                switch(view.getId()){
+                    case R.id.activity_confirmButton:
+                        submit();
+                        Intent intent1 = new Intent(ReleaseActivity.this,MainActivity.class);
+                        startActivity(intent1);
+                        finish();
+                        break;
+                    case R.id.activity_cancelButton:
+                        submitActivity.dismiss();
+                        break;
+                    case R.id.cover_pic:
+                        // 激活系统图库，选择一张图片
+                        Intent intent2 = new Intent(Intent.ACTION_PICK);
+                        intent2.setType("image/*");
+                        // 开启一个带有返回值的Activity，请求码为PHOTO_REQUEST_GALLERY
+                        startActivityForResult(intent2, PHOTO_REQUEST_GALLERY);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+        submitActivity.setCanceledOnTouchOutside(true);
+            View view = submitActivity.getCustomView();
+        //获取对象
+        activityHoldOrganization = (Spinner) view.findViewById(R.id.activity_hold_organization);
+        coverPic = (ImageView) view.findViewById(R.id.cover_pic);
+        coverName = (TextView) view.findViewById(R.id.textView2);
+        //activityConfirmButton = (TextView) view.findViewById(R.id.activity_confirmButton);
+        //activityCancelButton;
+        activityTime = (EditText) view.findViewById(R.id.activity_time);
+        activityIntroduction = (EditText) view.findViewById(R.id.activity_introduction);
 
         mEditor.setEditorHeight(200);
         mEditor.setEditorFontSize(22);
@@ -320,7 +418,8 @@ public class ReleaseActivity extends Activity {
                 /**
                  * 获得图片
                  */
-                //iv_img.setImageBitmap(bitmap);
+                coverPic.setImageBitmap(bitmap);
+                coverName.setText("head/"+coverPicName+".png");
                 //保存到SharedPreferences
                 saveBitmapToSharedPreferences(bitmap);
             }
@@ -339,9 +438,9 @@ public class ReleaseActivity extends Activity {
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setDataAndType(uri, "image/*");
         intent.putExtra("crop", "true");
-        // 裁剪框的比例，1：1
-        //intent.putExtra("aspectX", 1);
-        //intent.putExtra("aspectY", 1.375);
+        // 裁剪框的比例，746：404
+        intent.putExtra("aspectX", 746);
+        intent.putExtra("aspectY", 404);
         // 裁剪后输出图片的尺寸大小
         //intent.putExtra("outputX", 1024*1);
         //intent.putExtra("outputY", 1024*1.375);
@@ -384,6 +483,7 @@ public class ReleaseActivity extends Activity {
         imgName = time.toString();
         //给富文本返回的url
         urlForRich = "http://192.168.40.72:8080/PClubManager/images/head/" + imgName + ".png";
+        coverPicName = imgName;
 
         sp = getSharedPreferences("loginInfor", MODE_PRIVATE);
         String username = sp.getString("username", "");
@@ -408,25 +508,51 @@ public class ReleaseActivity extends Activity {
     }
 
     public void release(View view){
-        String ActivityName = editorHead.getHtml();
-        String ActivityContent = mEditor.getHtml();
+        //发请求获取全部的部门，不需要传递什么参数就用get方式
+        Request request=new Request.Builder()
+                .url("http://192.168.40.72:8080/PClubManager/Department_findAllForAndroid")
+                .get()
+                .build();
+        exec(request,1);
+        showPopupWindow(view);
 
+    }
+
+    //向后端提交数据
+     public void submit()
+     {
+         String ActivityName = editorHead.getHtml();
+        String ActivityContent = mEditor.getHtml();
+         String ActivityOrganization = (String) activityHoldOrganization.getSelectedItem();
+         String ActivityTime = activityTime.getText().toString();
+         String ActivityIntroduction = activityIntroduction.getText().toString();
+         String ActivityCover = coverName.getText().toString();
+
+         if(ActivityName == null)
+             ActivityName = "空标题";
+         if(ActivityContent == null)
+             ActivityContent = "空内容";
         //使用post的方式，向后端action发起传输请求
         FormBody.Builder builder1 = new FormBody.Builder();
-
-        FormBody formBody = builder1.add("ActivityName", ActivityName)
+        FormBody formBody = builder1
+                .add("ActivityName", ActivityName)
                 .add("ActivityContent",ActivityContent)
+                .add("ActivityOrganization",ActivityOrganization)
+                .add("ActivityTime",ActivityTime)
+                .add("ActivityIntroduction",ActivityIntroduction)
+                .add("ActivityCover","head/"+coverPicName+".png")
+                .add("ActivityLocation","计控15号楼")
                 .build();
-
         Request.Builder builder = new Request.Builder();
         Request request = builder.url("http://192.168.40.72:8080/PClubManager/Act_addActivityForAndroid")
                 .post(formBody)
                 .build();
-        exec(request);
-    }
+        exec(request,0);
+     }
 
     //将发送request的过程和回调函数的定义封装成一个方法
-    private void exec(Request request) {
+    private void exec(Request request,int backType) {
+        final int back = backType;
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -445,16 +571,34 @@ public class ReleaseActivity extends Activity {
             public void onResponse(Call call, Response response) throws IOException {
                 Log.i("成功：","-----");
                 //从服务器传回来的json字符串
-                final String msg = response.body().string();
-
-                ReleaseActivity.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //chatroomContent.setText(msg);
-                        Log.i("成功--------",msg);
-                    }
-                });
+                String msg = response.body().string();
+                switch (back)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        Message message = new Message();
+                        message.what = 2;
+                        message.obj = msg;
+                        handler.sendMessage(message);
+                }
             }
         });
     }
+
+
+
+    //显示popupWindow
+    private void showPopupWindow(View view){
+        //动态加载布局？！！  布局填充器？
+        //将弹框的布局加载到View控件中
+        //View contentview = LayoutInflater.from(ReleaseActivity.this).inflate(R.layout.submit,null);
+        //创建一个弹出Dialog控件   直接在java类里面创建
+        Window window = submitActivity.getWindow();
+        WindowManager.LayoutParams lp = window.getAttributes();
+        lp.alpha = 0.8f;
+        window.setAttributes(lp);
+        submitActivity.show();
+    }
+
 }
