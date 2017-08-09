@@ -86,3 +86,8 @@ dependencies {
     // https://mvnrepository.com/artifact/com.nostra13.universalimageloader/universal-image-loader
     compile group: 'com.nostra13.universalimageloader', name: 'universal-image-loader', version: '1.8.6'
 }
+
+//加载页面
+dependencies {
+    compile 'com.wang.avi:library:2.1.3'
+}

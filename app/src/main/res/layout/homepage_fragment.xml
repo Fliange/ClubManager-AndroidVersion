@@ -15,25 +15,38 @@
         tools:context="com.nankai.clubmanager.fragment.HomePageFragment">
 
 
-            <LinearLayout
-                android:layout_marginTop="0dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
 
-                    android:id="@+id/homepage_listview">
-                </ListView>
-            </LinearLayout>
-
+    <!--内容-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#FFFFFF">
+        <!--加载页面-->
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/avi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AVLoadingIndicatorView"
+            android:layout_marginTop="200dp"
+            android:visibility="visible"
+            android:layout_gravity="center"
+            app:indicatorName="BallClipRotateIndicator"
+            app:indicatorColor="#999999">
+        </com.wang.avi.AVLoadingIndicatorView>
+        <!--活动list-->
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/homepage_listview">
+        </ListView>
+    </LinearLayout>
 
     <!--侧滑菜单-->
     <com.mxn.soul.flowingdrawer_core.FlowingMenuLayout
         android:id="@+id/menulayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <LinearLayout
             android:id="@+id/id_container_menu"
             android:layout_width="match_parent"
