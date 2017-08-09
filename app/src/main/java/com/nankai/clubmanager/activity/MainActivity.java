@@ -94,6 +94,8 @@ public class MainActivity extends FragmentActivity {
         fragmentManager = getSupportFragmentManager();
         transaction = fragmentManager.beginTransaction();
         Fragment init = new HomePageFragment();
+        mHomePageView.setBigIcon(R.drawable.home_icon_clicked);
+        mHomePageView.setSmallIcon(R.drawable.home_icon_clicked);
         transaction.replace(R.id.fragmentPager,init,"fragment");
         transaction.commit();
 

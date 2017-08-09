@@ -193,7 +193,7 @@
         android:layout_columnSpan="2"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp">
-    <EditText
+    <TextView
         android:id="@+id/delete_new_regist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -209,7 +209,7 @@
         android:paddingTop="2dip"
         android:text="添加"
         android:textSize="20sp" />
-        <EditText
+        <TextView
             android:id="@+id/welcome_new_regist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -37,12 +37,14 @@
             <!--What you want to show in SurfaceView-->
             <TextView
                 android:id="@+id/manage_material_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:gravity="center"
                 android:layout_marginLeft="15dp"
+                android:background="@drawable/material_name_bg"
                 android:text="桌子"
-                android:textSize="30sp"/>
+                android:textColor="#FFFFFF"
+                android:textSize="25sp"/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
