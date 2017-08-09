@@ -52,6 +52,16 @@
             android:layout_height="175dp"/>
 
         <!--活动简介-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:textSize="11sp"
+            android:textColor="#666666"/>
+        <!--活动简介-->
         <TextView
             android:id="@+id/item_text"
             android:layout_width="match_parent"
@@ -63,24 +73,6 @@
             android:textSize="11sp"
             android:textColor="#666666"/>
 
-        <!--假装有活动简介，只是用来尝试排版的-->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="3dp"
-            android:text="我父亲的父亲，阵亡于布宜诺斯艾利斯的边境，两颗子弹射穿了他的"
-            android:textSize="11sp"
-            android:textColor="#666666"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:text="胸膛，死的时候蓄着胡子。 "
-            android:textSize="11sp"
-            android:textColor="#666666"/>
 
         <!--底部-->
         <LinearLayout

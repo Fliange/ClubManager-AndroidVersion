@@ -11,6 +11,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dp">
         <TextView
+            android:id="@+id/activity_detail_Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="运动会"
@@ -28,6 +29,7 @@
             android:background="#000000" />
 
         <ImageView
+            android:id="@+id/activity_detail_Picture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/test_pic"
@@ -43,6 +45,7 @@
             android:background="#000000" />
 
         <TextView
+            android:id="@+id/activity_detail_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="15dp"

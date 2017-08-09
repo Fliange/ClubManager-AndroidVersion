@@ -20,6 +20,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -86,8 +87,10 @@ public class ReleaseActivity extends Activity {
     private OkHttpClient okHttpClient = new OkHttpClient();
     //记录的是返回的所有的部门信息
     private List<String> departmentData = new ArrayList<String>();
-    //上下文？？
-    private Context context;
+    //封面
+    private ImageView coverPic;
+    private String coverPicName = "a";
+    private TextView coverName;
 
     //handler，在回调函数里监听，照片有没有传给服务器，要是传了，就在富文本编辑器里面显示出来
     final Handler handler = new Handler(){          // handle
@@ -140,9 +143,9 @@ public class ReleaseActivity extends Activity {
         setContentView(R.layout.release);
         x.view().inject(this);
 
-        //submitActivity = new SubmitActivity(this);
-        //activityHoldOrganization = (Spinner) submitActivity.findViewById(R.id.activity_hold_organization);
+        //对话框对象
         submitActivity = new SubmitActivity(ReleaseActivity.this,R.style.Base_Theme_AppCompat_Dialog_Alert, new SubmitActivity.LeaveMyDialogListener() {
+            //监听对话框点击事件
             @Override
             public void onClick(View view) {
                 switch(view.getId()){
@@ -155,6 +158,13 @@ public class ReleaseActivity extends Activity {
                     case R.id.activity_cancelButton:
                         submitActivity.dismiss();
                         break;
+                    case R.id.cover_pic:
+                        // 激活系统图库，选择一张图片
+                        Intent intent2 = new Intent(Intent.ACTION_PICK);
+                        intent2.setType("image/*");
+                        // 开启一个带有返回值的Activity，请求码为PHOTO_REQUEST_GALLERY
+                        startActivityForResult(intent2, PHOTO_REQUEST_GALLERY);
+                        break;
                     default:
                         break;
                 }
@@ -164,6 +174,8 @@ public class ReleaseActivity extends Activity {
             View view = submitActivity.getCustomView();
         //获取对象
         activityHoldOrganization = (Spinner) view.findViewById(R.id.activity_hold_organization);
+        coverPic = (ImageView) view.findViewById(R.id.cover_pic);
+        coverName = (TextView) view.findViewById(R.id.textView2);
         //activityConfirmButton = (TextView) view.findViewById(R.id.activity_confirmButton);
         //activityCancelButton;
         activityTime = (EditText) view.findViewById(R.id.activity_time);
@@ -406,7 +418,8 @@ public class ReleaseActivity extends Activity {
                 /**
                  * 获得图片
                  */
-                //iv_img.setImageBitmap(bitmap);
+                coverPic.setImageBitmap(bitmap);
+                coverName.setText("head/"+coverPicName+".png");
                 //保存到SharedPreferences
                 saveBitmapToSharedPreferences(bitmap);
             }
@@ -470,6 +483,7 @@ public class ReleaseActivity extends Activity {
         imgName = time.toString();
         //给富文本返回的url
         urlForRich = "http://192.168.40.72:8080/PClubManager/images/head/" + imgName + ".png";
+        coverPicName = imgName;
 
         sp = getSharedPreferences("loginInfor", MODE_PRIVATE);
         String username = sp.getString("username", "");
@@ -510,9 +524,10 @@ public class ReleaseActivity extends Activity {
          String ActivityName = editorHead.getHtml();
         String ActivityContent = mEditor.getHtml();
          String ActivityOrganization = (String) activityHoldOrganization.getSelectedItem();
-
          String ActivityTime = activityTime.getText().toString();
-         String ActivityIntroduction = activityIntroduction.getText().toString().substring(0,2);
+         String ActivityIntroduction = activityIntroduction.getText().toString();
+         String ActivityCover = coverName.getText().toString();
+
          if(ActivityName == null)
              ActivityName = "空标题";
          if(ActivityContent == null)
@@ -525,6 +540,8 @@ public class ReleaseActivity extends Activity {
                 .add("ActivityOrganization",ActivityOrganization)
                 .add("ActivityTime",ActivityTime)
                 .add("ActivityIntroduction",ActivityIntroduction)
+                .add("ActivityCover","head/"+coverPicName+".png")
+                .add("ActivityLocation","计控15号楼")
                 .build();
         Request.Builder builder = new Request.Builder();
         Request request = builder.url("http://192.168.40.72:8080/PClubManager/Act_addActivityForAndroid")

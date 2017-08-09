@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -21,6 +22,8 @@ public class SubmitActivity extends Dialog implements android.view.View.OnClickL
     private TextView activityCancelButton;
     private EditText activityTime;
     private EditText activityIntroduction;
+    private ImageView coverPic;
+    private TextView textView2;
 
     //实现了一个LeaveMyDialogListener接口，用来实现onclick的点击事件
     private LeaveMyDialogListener listener;
@@ -58,10 +61,14 @@ public class SubmitActivity extends Dialog implements android.view.View.OnClickL
         activityCancelButton = (TextView) findViewById(R.id.activity_cancelButton);
         activityTime = (EditText) findViewById(R.id.activity_time);
         activityIntroduction = (EditText) findViewById(R.id.activity_introduction);
+        coverPic = (ImageView) findViewById(R.id.cover_pic);
+        textView2 = (TextView) findViewById(R.id.textView2);
 
         //按钮监听
         activityConfirmButton.setOnClickListener(this);
         activityCancelButton.setOnClickListener(this);
+        coverPic.setOnClickListener(this);
+
         /*//全屏
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);

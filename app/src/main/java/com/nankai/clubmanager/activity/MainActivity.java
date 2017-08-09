@@ -1,11 +1,11 @@
 package com.nankai.clubmanager.activity;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,7 +18,6 @@ import com.nankai.clubmanager.R;
 import com.nankai.clubmanager.fragment.FoundViewFragment;
 import com.nankai.clubmanager.fragment.HomePageFragment;
 import com.nankai.clubmanager.fragment.ManageViewFragment;
-import com.nankai.clubmanager.fragment.RegistViewFragment;
 import com.nankai.library.NaviView;
 
 import org.xutils.view.annotation.ContentView;
@@ -192,23 +191,28 @@ public class MainActivity extends FragmentActivity {
                 List<Map<String,Object>> list_map = new ArrayList<Map<String,Object>>(); //定义一个适配器对象
                 //遍历json数组,将图片对象搞进去
 
-                String activityName, activityPic,IMAGE_URL;
+                String activityName, activityPic,IMAGE_URL,activityOrganization,activityIntroduction;
                 Drawable drawable;
                 for (int i = 0; i < arrayList.size(); i++) {
                     Map<String, Object> activity = arrayList.get(i);
                     activityName = (String) activity.get("ActivityName");
                     activityPic = (String) activity.get("ActivityPicture");
+                    activityOrganization = (String) activity.get("ActivityOrganization");
+                    activityIntroduction = (String) activity.get("ActivityIntroduction");
                     IMAGE_URL = "http://192.168.40.72:8080/PClubManager/images/"+activityPic;
                     drawable = loadImageFromNetwork(IMAGE_URL);
                     activity.put("pic",drawable);
+                    activity.put("ActivityName",activityName);
+                    activity.put("activityOrganization",activityOrganization);
+                    activity.put("activityIntroduction",activityIntroduction);
                     list_map.add(activity);
                 }
                 final SimpleAdapter simpleAdapter = new SimpleAdapter(
                         MainActivity.this,/*传入一个上下文作为参数*/
                         list_map,         /*传入相对应的数据源，这个数据源不仅仅是数据而且还是和界面相耦合的混合体。*/
                         R.layout.homepage_list_item, /*设置具体某个items的布局，需要是新的布局，而不是ListView控件的布局*/
-                        new String[]{"pic","ActivityName"}, /*传入上面定义的键值对的键名称,会自动根据传入的键找到对应的值*/
-                        new int[]{R.id.item_img,R.id.item_text});/*传入items布局文件中需要指定传入的控件，这里直接上id即可*/
+                        new String[]{"pic","ActivityName","activityOrganization","activityIntroduction"}, /*传入上面定义的键值对的键名称,会自动根据传入的键找到对应的值*/
+                        new int[]{R.id.item_img,R.id.item_title,R.id.item_author,R.id.item_text});/*传入items布局文件中需要指定传入的控件，这里直接上id即可*/
 
                 //ViewBinder该类可以帮助SimpleAdapter加载图片(Drawable)
                 simpleAdapter.setViewBinder(new SimpleAdapter.ViewBinder() {
@@ -234,7 +238,6 @@ public class MainActivity extends FragmentActivity {
                     }
                 });
             }
-
         });
     }
 
