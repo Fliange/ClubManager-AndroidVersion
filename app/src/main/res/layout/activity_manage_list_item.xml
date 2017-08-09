@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/homepage_listview_bg"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center">
+        <ImageView
+            android:id="@+id/item_img"
+            android:paddingBottom="10dip"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="10dip"
+            android:src="@drawable/test_pic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/homepage_listview_bg2"
+        android:layout_gravity="center">
+        <TextView
+            android:id="@+id/item_text"
+            android:paddingBottom="10dip"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="10dip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="这是活动简介。。。"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="350dp"
+        android:layout_height="1px"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dip"
+        android:background="#000000" />
+</LinearLayout>

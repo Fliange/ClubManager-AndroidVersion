@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="学生会宣传部"
+            android:text="运动会"
             android:paddingBottom="15dp"
             android:paddingTop="15dp"
             android:paddingLeft="15dp"
@@ -49,7 +49,50 @@
             android:paddingTop="15dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
-            android:text="这里是部门介绍。。。。"/>
+            android:text="这里是活动详情。。。。"/>
+        <View
+            android:layout_width="250dp"
+            android:layout_height="1px"
+            android:layout_gravity="center"
+            android:background="#000000" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="35dp"
+                android:text="评论"
+                android:textSize="20sp"/>
+            <ImageView
+                android:id="@+id/thumb_up"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/pre_thumb_up"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center"/>
+            <!--点赞数-->
+            <TextView
+                android:id="@+id/thumb_up_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="158"/>
+        </LinearLayout>
+        <View
+            android:layout_width="250dp"
+            android:layout_height="1px"
+            android:layout_gravity="center"
+            android:background="#000000" />
+        <!--评论内容-->
+        <ListView
+            android:id="@+id/activity_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ></ListView>
 
     </LinearLayout>
 
