@@ -55,19 +55,33 @@
                 android:layout_height="180dp"
                 android:background="@drawable/test_pic">
                 <com.nankai.library.RoundImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="115dp"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:layout_marginTop="95dp"
                     android:layout_marginLeft="20dp"
                     android:id="@+id/myphoto"
                     android:src="@drawable/head_image"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="130dp"
+                    android:layout_marginTop="95dp"
                     android:layout_marginLeft="15dp"
                     android:text="张三"
-                    android:textSize="20sp"/>
+                    android:textColor="#FFFFFF"
+                    android:textSize="30sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="15dp"
+                        android:text="学生会外联部"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"/>
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
