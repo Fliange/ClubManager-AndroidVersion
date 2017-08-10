@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="460dp"
+    android:layout_height="match_parent"
 
     android:columnCount="2"
-    android:rowCount="10"
+    android:rowCount="11"
     tools:context="com.nankai.clubmanager.activity.UpdateMemberActivity">
 
 
@@ -26,6 +26,7 @@
         android:text="学号"
         android:textSize="20sp" />
     <ImageView
+        android:id="@+id/picture"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="fill"
@@ -131,7 +132,25 @@
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
         android:paddingTop="4dip"
-        android:text="职务"
+        android:hint="职务"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/new_redist_department"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_columnSpan="2"
+        android:layout_centerInParent="true"
+        android:background="@drawable/text_bg_green"
+        android:gravity="center"
+        android:paddingBottom="4dip"
+        android:paddingLeft="30dip"
+        android:paddingRight="30dip"
+        android:paddingTop="4dip"
+        android:hint="部门"
         android:textSize="20sp" />
     <EditText
         android:id="@+id/new_redist_birthday"
@@ -194,7 +213,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp">
     <TextView
-        android:id="@+id/delete_new_regist"
+        android:id="@+id/welcome_new_regist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -210,7 +229,7 @@
         android:text="添加"
         android:textSize="20sp" />
         <TextView
-            android:id="@+id/welcome_new_regist"
+            android:id="@+id/delete_new_regist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
