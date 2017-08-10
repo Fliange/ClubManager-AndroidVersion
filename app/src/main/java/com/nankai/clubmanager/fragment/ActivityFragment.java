@@ -1,6 +1,8 @@
 package com.nankai.clubmanager.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -30,6 +32,7 @@ import okhttp3.Response;
 public class ActivityFragment extends Fragment {
     private ListView listView;
     private List<Map<String,Object>> lists=new ArrayList<>();
+
     private int[] photo={R.drawable.test_pic,R.drawable.test_pic,R.drawable.test_pic,R.drawable.test_pic,
             R.drawable.test_pic,R.drawable.test_pic,R.drawable.test_pic,R.drawable.test_pic,
             R.drawable.test_pic};  //照片
@@ -39,24 +42,42 @@ public class ActivityFragment extends Fragment {
 
     //用来进行与后端通信的okHttpClient
     private OkHttpClient okHttpClient = new OkHttpClient();
+    //收取所有活动的信息
+    private List<Map<String, Object>> activityList = new ArrayList<>();
+
+
+    //handler，在回调函数里监听,如果已经拿到了所有的活动的数据，就在listview显示出来
+    final Handler handler = new Handler(){          // handle
+        public void handleMessage(Message msg){
+            switch (msg.what) {
+                case 1:
+                    String[] keys={"icon","name"};
+                    int[] ids={R.id.item_img,R.id.item_text};
+
+                    SimpleAdapter simpleAdapter=new SimpleAdapter(getActivity(),lists,R.layout.activity_manage_list_item,keys,ids);
+                    listView.setAdapter(simpleAdapter);
+
+                    lists.clear();
+                    for(int i=0; i < activityList.size(); i++){
+                        Map<String,Object> map=new HashMap<>();
+                        map.put("icon",activityList.get(i).get("ActivityName").toString().substring(0,1));
+                        map.put("name",activityList.get(i).get("ActivityName").toString());
+                        lists.add(map);
+                    }
+                    break;
+                default:
+                    break;
+            }
+            super.handleMessage(msg);
+        }
+    };
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.activity_fragment, container,false);
         listView = (ListView)view.findViewById(R.id.activity_listview);
-        String[] keys={"photos","details"};
-        int[] ids={R.id.item_img,R.id.item_text};
-
-        SimpleAdapter simpleAdapter=new SimpleAdapter(getActivity(),lists,R.layout.activity_manage_list_item,keys,ids);
-        listView.setAdapter(simpleAdapter);
-
-        for(int i=0;i<photo.length;i++){
-            Map<String,Object> map=new HashMap<>();
-
-            map.put("photos",photo[i]);
-            map.put("details",detail[i]);
-            lists.add(map);
-        }
+        setHomePage();
         return view;
     }
     //用于从数据库拿数据 并显示到首页
@@ -88,9 +109,15 @@ public class ActivityFragment extends Fragment {
                 final String msg = response.body().string();
 
                 /**将json字符串转换为List<Map<String,Object>>*/
-                List<Map<String, Object>> arrayList = JSON.parseObject(msg,
-                        new TypeReference<List<Map<String, Object>>>() {});
+                if(!activityList.isEmpty())
+                {//如果非空，先清空
+                    activityList.clear();
+                }
+                activityList = JSON.parseObject(msg,new TypeReference<List<Map<String, Object>>>() {});
 
+                Message message = new Message();
+                message.what = 1;
+                handler.sendMessage(message);
                /* list_map.clear();
 
                 final SimpleAdapter simpleAdapter = new SimpleAdapter(

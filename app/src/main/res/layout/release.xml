@@ -6,9 +6,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.nankai.clubmanager.activity.ReleaseActivity">
+
     <include
         android:id="@+id/resist_title"
         layout="@layout/title2" />
+
     <jp.wasabeef.richeditor.RichEditor
     android:id="@+id/rich_edit_head"
     android:layout_width="match_parent"

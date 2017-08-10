@@ -32,6 +32,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -477,7 +478,7 @@ public class ReleaseActivity extends Activity {
      * @param imgName
      */
     public  void setImgByStr(String imgStr, String imgName) {
-        String url = "http://192.168.40.72:8080/PClubManager/loadImage";
+        String url = "http://192.168.40.72:8080/PClubManager/loadImageForSwain_GenerateImageForActivity";
         Map<String, String> params = new HashMap<String, String>();
         Long time = System.currentTimeMillis();
         imgName = time.toString();
@@ -601,4 +602,9 @@ public class ReleaseActivity extends Activity {
         submitActivity.show();
     }
 
+    @Event(value = {R.id.release_back},type = View.OnClickListener.class)
+    private void myfinish()
+    {
+        finish();
+    }
 }
