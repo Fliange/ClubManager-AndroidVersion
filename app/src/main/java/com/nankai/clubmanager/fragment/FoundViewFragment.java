@@ -13,9 +13,11 @@ import android.widget.SimpleAdapter;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
+import com.nankai.clubmanager.BannerLayout;
 import com.nankai.clubmanager.R;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -46,6 +48,28 @@ public class FoundViewFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.found_fragment, container,false);
         messageListView = (ListView) view.findViewById(R.id.found_listView);
+
+        //轮播图
+        BannerLayout bannerLayout1 = (BannerLayout) view.findViewById(R.id.banner1);
+        List<Integer> res = new ArrayList<>();
+        res.add(R.drawable.lunbo1);
+        res.add(R.drawable.lunbo2);
+        res.add(R.drawable.lunbo3);
+        List<String> titles = new ArrayList<>();
+        titles.add("标题一");
+        titles.add("标题二");
+        titles.add("标题三");
+        if (bannerLayout1 != null) {
+            bannerLayout1.setViewRes(res, titles);
+        }
+        List<String> urls = new ArrayList<>();
+        urls.add("http://www.ctsay.com/img/16/0321/56ef5ac94368c.jpeg");
+        urls.add("http://www.ctsay.com/img/16/0331/56fc8af888536.jpg");
+        urls.add("http://www.ctsay.com/img/16/0205/56b3f70240f6b.jpg");
+        urls.add("http://www.ctsay.com/img/15/1215/566f81191b023.jpg");
+        //轮播图结束
+
+
         getAllMessage();
         return view;
     }

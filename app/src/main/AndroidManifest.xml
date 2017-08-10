@@ -16,7 +16,9 @@
         android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.ChatRoomActivity" />
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.MainActivity"
+            android:theme="@style/AppTheme">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -42,6 +44,7 @@
         <activity android:name=".activity.MyInformationActivity"></activity>
         <activity android:name=".activity.PasswordUpdateActivity"></activity>
         <activity android:name=".fragment.RegistViewFragment"></activity>
+
     </application>
 
 </manifest>

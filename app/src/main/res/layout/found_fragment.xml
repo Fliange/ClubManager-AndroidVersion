@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#FFFFFF"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.nankai.clubmanager.fragment.FoundViewFragment">
 
     <include
@@ -13,6 +16,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         layout="@layout/titlebar_main"/>
+
+    <com.nankai.clubmanager.BannerLayout
+        android:id="@+id/banner1"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        app:defaultImage="@mipmap/ic_launcher"
+        app:indicatorMargin="10dp"
+        app:indicatorShape="oval"
+        app:indicatorSpace="2dp"
+        app:scrollDuration="1100"
+        app:selectedIndicatorColor="?attr/colorPrimary"
+        app:selectedIndicatorHeight="6dp"
+        app:selectedIndicatorWidth="6dp"
+        app:titleColor="#ff0000"
+        app:unSelectedIndicatorColor="#99ffff"
+        app:unSelectedIndicatorHeight="6dp"
+        app:unSelectedIndicatorWidth="6dp"/>
+
     <ListView
         android:layout_below="@+id/title_bar"
         android:id="@+id/found_listView"
@@ -46,4 +67,4 @@
             android:layout_marginLeft="10dp"
             android:text="发 送"/>
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>
