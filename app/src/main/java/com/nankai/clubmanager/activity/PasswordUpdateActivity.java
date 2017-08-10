@@ -78,6 +78,12 @@ public class PasswordUpdateActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         x.view().inject(this);
+        findViewById(R.id.update_password_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
     private void exec(Request request) {
         okHttpClient.newCall(request).enqueue(new Callback() {
