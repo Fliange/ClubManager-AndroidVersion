@@ -24,6 +24,7 @@ import com.nankai.library.NaviView;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -296,5 +297,12 @@ public class MainActivity extends FragmentActivity {
             Log.d("test", "not null drawable");
         }
         return drawable ;
+    }
+
+    @Event(value = {R.id.release_activity},type = View.OnClickListener.class)
+    private void releaseActivity(View view)
+    {
+        Intent intent = new Intent(MainActivity.this,ReleaseActivity.class);
+        startActivity(intent);
     }
 }

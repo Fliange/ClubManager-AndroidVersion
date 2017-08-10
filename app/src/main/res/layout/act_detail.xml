@@ -164,16 +164,15 @@
                         android:textColor="#666666"/>
                 </LinearLayout>
                 <!--点赞-->
-                <!--点赞之后的src是act_detail_like_icon_clicked，图标是红色的，已经加drawable，可直接使用-->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="220dp">
+                    android:layout_marginLeft="190dp">
                     <ImageView
                         android:id="@+id/thumb_up"
                         android:layout_width="16dp"
                         android:layout_height="16dp"
-                        android:src="@drawable/act_detail_like_icon" />
+                        android:src="@drawable/zan1"/>
                     <!--点赞数-->
                     <TextView
                         android:id="@+id/thumb_up_count"
@@ -183,9 +182,11 @@
                         android:text="158"
                         android:textSize="13sp"
                         android:textColor="#666666"/>
+                    <!--收藏-->
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
                         android:id="@+id/collection"/>
                 </LinearLayout>
             </LinearLayout>

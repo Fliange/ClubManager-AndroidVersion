@@ -3,35 +3,39 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent" android:layout_height="80dp">
+        android:layout_width="match_parent" android:layout_height="80dp"
+        android:id="@+id/lay"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
         <!-- Bottom View Start-->
         <LinearLayout
+            android:background="#66ddff00"
             android:id="@+id/material_item_bottom_wrapper"
-            android:layout_width="150dp"
-            android:layout_height="100dp">
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
             <LinearLayout
-                android:background="#707070"
-                android:layout_width="75dp"
-                android:layout_height="match_parent">
-                <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+                <TextView
                     android:id="@+id/material_item_view"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginLeft="22dp"
-                    android:src="@drawable/view"/>
-            </LinearLayout>
-            <LinearLayout
-                android:background="#FF0000"
-                android:layout_width="75dp"
-                android:layout_height="match_parent">
-                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/view"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"/>
+                <TextView
                     android:id="@+id/material_item_delete"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginLeft="23dp"
-                    android:src="@drawable/delete"/>
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/delete"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -49,7 +53,6 @@
                 android:gravity="center"
                 android:layout_marginLeft="15dp"
                 android:background="@drawable/material_name_bg"
-                android:text="桌子"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp"/>
             <LinearLayout
@@ -57,22 +60,25 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
-                    android:id="@+id/manage_material_count"
+                    android:id="@+id/manage_material_org"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="50dp"
-                    android:text="数量：100"
-                    android:textSize="20sp"/>
+                    android:textSize="10sp"/>
+                <TextView
+                    android:id="@+id/manage_material_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:textSize="10sp"/>
                 <TextView
                     android:id="@+id/manage_materail_extra"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="50dp"
                     android:layout_marginRight="10dp"
-                    android:text="备注：这是我们部门的桌子。。。"
-                    android:textSize="15sp"/>
+                    android:textSize="10sp"/>
             </LinearLayout>
         </LinearLayout>
         <!-- Surface View End -->
