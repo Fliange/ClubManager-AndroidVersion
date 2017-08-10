@@ -14,8 +14,6 @@
         android:orientation="vertical"
         tools:context="com.nankai.clubmanager.fragment.HomePageFragment">
 
-
-
     <!--内容-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -112,13 +110,29 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:src="@drawable/password_icon"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/modify_password"
+                    android:layout_marginLeft="15dp"
+                    android:text="我的部门" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/department_icon"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/myapartment"
                     android:layout_marginLeft="15dp"
-                    android:text="我的部门" />
+                    android:text="修改密码" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"

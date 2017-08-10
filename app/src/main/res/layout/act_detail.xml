@@ -3,104 +3,197 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context="com.nankai.clubmanager.activity.ActDetailActivity">
     <include
         layout="@layout/title1" />
 
-    <LinearLayout
-        android:layout_width="330dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/activity_detail_Name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingBottom="15dp"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:paddingTop="15dp"
-            android:textSize="30dp" />
-
-        <View
-            android:layout_width="250dp"
-            android:layout_height="1px"
-            android:layout_gravity="center"
-            android:background="#000000" />
-
-        <ImageView
-            android:id="@+id/activity_detail_Picture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingBottom="15dp"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:paddingTop="15dp" />
-
-        <View
-            android:layout_width="250dp"
-            android:layout_height="1px"
-            android:layout_gravity="center"
-            android:background="#000000" />
-
-        <jp.wasabeef.richeditor.RichEditor
-            android:id="@+id/rich_activity_detail_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
-        <View
-            android:layout_width="250dp"
-            android:layout_height="1px"
-            android:layout_gravity="center"
-            android:background="#000000" />
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:background="#FFFFFF">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <!--标题图-->
+                <ImageView
+                    android:id="@+id/activity_detail_Picture"
+                    android:layout_width="400dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center_horizontal" />
+                <!--分享-->
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="325dp"
+                    android:layout_marginTop="6dp"
+                    android:src="@drawable/act_detail_share_icon" />
+            </RelativeLayout>
+
+            <!--分类-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="7dp">
+                <ImageView
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/tag_icon_activity_detail"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:text="类别"
+                    android:textSize="10sp"
+                    android:textColor="#666666"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2017年8月10日"
+                    android:layout_marginLeft="200dp"
+                    android:layout_marginRight="20dp"
+                    android:textSize="10sp"
+                    android:textColor="#666666"/>
+            </LinearLayout>
+
+            <!--标题-->
+            <TextView
+                android:id="@+id/activity_detail_Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#333333"/>
+
+            <!--作者-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp">
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/author_icon_activity_detail"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="学生会外联部"
+                    android:textColor="#666666"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <!--摘要-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="10dp"
-                android:text="评论"
-                android:textSize="20sp" />
-
-            <ImageView
-                android:id="@+id/thumb_up"
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/arc_detail_introduction"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="13dp"
+                android:lineSpacingExtra="5dp"
+                android:layout_marginBottom="23dp"
+                android:text="这是一个简介，是的，这是一个简介，我在加长他的长度，大概这么多，一句话就行"
+                android:textSize="12sp"
+                android:textColor="#999999"/>
+            <View
+                android:layout_width="200dp"
+                android:layout_marginBottom="7dp"
+                android:layout_height="1px"
                 android:layout_gravity="center"
-                android:layout_marginLeft="15dp"
-                android:src="@drawable/pre_thumb_up" />
-            <!--点赞数-->
+                android:background="#333333" />
+
+            <!--内容-->
+            <jp.wasabeef.richeditor.RichEditor
+                android:id="@+id/rich_activity_detail_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
+
+            <!--假的内容-->
             <TextView
-                android:id="@+id/thumb_up_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="158" />
+                android:lineSpacingExtra="6dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+                android:text="    当我沉默着的时候，我觉得充实；我将开口，同时感到空虚。过去的生命已经死亡。我对于这死亡有大欢喜，因为我借此知道它曾经存活。死亡的生命已经朽腐。我对于这朽腐有大欢喜，因为我借此知道它还非空虚。生命的泥委弃在地面上，不生乔木，只生野草，这是我的罪过。野草，根本不深，花叶不美，然而吸取露，吸取水，吸取陈死人的血和肉，各各夺取它的生存。当生存时，还是将遭践踏，将遭删刈，直至死亡而朽腐。但我坦然，欣然。我将大笑，我将歌唱。我自爱我的野草，但我憎恶这以野草作装饰的地面。地火在地下运行，奔突；熔岩一旦喷出，将烧尽一切野草，以及乔木，于是并且无可朽腐。但我坦然，欣然。我将大笑，我将歌唱。天地有如此静穆，我不能大笑而且歌唱。天地即不如此静穆，我或者也将不能。我以这一丛野草，在明与暗，生与死，过去与未来之际，献于友与仇，人与兽，爱者与不爱者之前作证。为我自己，为友与仇，人与兽，爱者与不爱者，我希望这野草的朽腐，火速到来。要不然，我先未曾生存，这实在比死亡与朽腐更其不幸。去罢，野草，连着我的题辞！"
+                android:textSize="12sp"
+                android:textColor="#555555"/>
+
+            <!--底部-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="25dp">
+                <!--评论-->
+                <LinearLayout
+                    android:id="@+id/act_detail_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="15dp">
+                    <ImageView
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:src="@drawable/act_detail_comment_icon"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="3dp"
+                        android:text="评论"
+                        android:textSize="13sp"
+                        android:textColor="#666666"/>
+                </LinearLayout>
+                <!--点赞-->
+                <!--点赞之后的src是act_detail_like_icon_clicked，图标是红色的，已经加drawable，可直接使用-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="220dp">
+                    <ImageView
+                        android:id="@+id/thumb_up"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/act_detail_like_icon" />
+                    <!--点赞数-->
+                    <TextView
+                        android:id="@+id/thumb_up_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:text="158"
+                        android:textSize="13sp"
+                        android:textColor="#666666"/>
+                </LinearLayout>
+            </LinearLayout>
+            <!--底部结束-->
+
+            <!--评论内容-->
+            <ListView
+                android:id="@+id/activity_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </ListView>
+
         </LinearLayout>
-
-        <View
-            android:layout_width="250dp"
-            android:layout_height="1px"
-            android:layout_gravity="center"
-            android:background="#000000" />
-        <!--评论内容-->
-        <ListView
-            android:id="@+id/activity_comment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"></ListView>
-
-    </LinearLayout>
+    </ScrollView>
 </LinearLayout>
