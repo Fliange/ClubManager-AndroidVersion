@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
-        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.LoginActivity"></activity>
         <activity android:name=".activity.ChatRoomActivity" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
@@ -30,7 +30,6 @@
         <activity android:name=".activity.FirstWelcomeActivity"></activity>
         <activity android:name=".activity.WelcomeActivity">
         </activity>
-
         <activity
             android:name=".activity.ActDetailActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
