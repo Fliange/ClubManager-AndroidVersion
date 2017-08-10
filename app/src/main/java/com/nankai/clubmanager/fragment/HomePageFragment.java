@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.nankai.clubmanager.R;
 import com.nankai.clubmanager.activity.LoginActivity;
+import com.nankai.clubmanager.activity.MyCollectionActivity;
 import com.nankai.clubmanager.activity.PasswordUpdateActivity;
 import com.nankai.clubmanager.extra.OkHttp;
 
@@ -78,6 +79,18 @@ public class HomePageFragment extends Fragment{
         exit=(TextView) view.findViewById(R.id.logout);
 
         sp1=getActivity().getSharedPreferences("loginInfor",MODE_PRIVATE);
+
+        //跳转到收藏的活动的页面
+        view.findViewById(R.id.mycollection).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(HomePageFragment.this.getActivity(),MyCollectionActivity.class);
+                        startActivity(intent);
+                    }
+                }
+        );
+
         //点击头像实现更换头像的功能
         imageView= (ImageView) view.findViewById(R.id.myphoto);
         initView();
@@ -280,5 +293,6 @@ public class HomePageFragment extends Fragment{
         }
 
     }
+
 }
 
