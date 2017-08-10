@@ -83,7 +83,7 @@ public class RegistViewFragment extends Activity {
                         JSONObject obj=array.getJSONObject(i);
                         departmentData.add(obj.getInt("departmentId")+"  "+obj.getString("departmentName"));
                     }
-                    ArrayAdapter adapter = new ArrayAdapter(context,android.R.layout.simple_list_item_1,departmentData);
+                    ArrayAdapter adapter = new ArrayAdapter(RegistViewFragment.this,android.R.layout.simple_list_item_1,departmentData);
                     intent1.setAdapter(adapter);
                     intent2.setAdapter(adapter);
                 } catch (JSONException e) {
