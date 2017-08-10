@@ -1,7 +1,9 @@
 package com.nankai.clubmanager.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -10,8 +12,13 @@ import android.widget.Button;
 
 import com.nankai.clubmanager.R;
 
+import java.io.OutputStream;
+
 public class WelcomeActivity extends Activity {
     private Button jump;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
+    private OutputStream os;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +32,18 @@ public class WelcomeActivity extends Activity {
 //            finish();
 //            return;
 //        }
+        preferences = getSharedPreferences("phone", Context.MODE_PRIVATE);
+        //判断是不是首次登录，
+        if (preferences.getBoolean("firststart", true)) {
+            editor = preferences.edit();
+            //将登录标志位设置为false，下次登录时不在显示首次登录界面
+            editor.putBoolean("firststart", false);
+            editor.commit();
+            Intent intent = new Intent(WelcomeActivity.this,FirstWelcomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
 
         // 如果不是第一次启动app，则正常显示启动屏
         setContentView(R.layout.activity_welcome);

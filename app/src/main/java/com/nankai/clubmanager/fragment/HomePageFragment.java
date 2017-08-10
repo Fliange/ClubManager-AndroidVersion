@@ -26,6 +26,7 @@ import com.nankai.clubmanager.activity.LoginActivity;
 import com.nankai.clubmanager.activity.MyCollectionActivity;
 import com.nankai.clubmanager.activity.PasswordUpdateActivity;
 import com.nankai.clubmanager.extra.OkHttp;
+import com.nankai.clubmanager.viewPager.AboutUsViewPager;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -51,6 +52,7 @@ public class HomePageFragment extends Fragment{
     private TextView myDepartments;
     private TextView myCollect;
     private TextView exit;
+    private TextView about_us;
     private static final int PHOTO_REQUEST_CAREMA = 1;// 拍照
     private static final int PHOTO_REQUEST_GALLERY = 2;// 从相册中选择
     private static final int PHOTO_REQUEST_CUT = 3;// 结果
@@ -77,6 +79,7 @@ public class HomePageFragment extends Fragment{
         myDepartments=(TextView) view.findViewById(R.id.myapartment);
         myCollect=(TextView) view.findViewById(R.id.mycollection);
         exit=(TextView) view.findViewById(R.id.logout);
+        about_us=(TextView)view.findViewById(R.id.about_us);
 
         sp1=getActivity().getSharedPreferences("loginInfor",MODE_PRIVATE);
 
@@ -90,6 +93,15 @@ public class HomePageFragment extends Fragment{
                     }
                 }
         );
+
+        //跳转到关于我们界面
+        about_us.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_about=new Intent(HomePageFragment.this.getActivity(),AboutUsViewPager.class);
+                startActivity(intent_about);
+            }
+        });
 
         //点击头像实现更换头像的功能
         imageView= (ImageView) view.findViewById(R.id.myphoto);

@@ -23,9 +23,7 @@ import java.util.Map;
 public class FoundViewFragment extends Fragment{
     private ListView listView;
     private List<Map<String,Object>> lists=new ArrayList<>();
-    private String[] content={"这是显示在布告上的内容","这是显示在布告上的内容","这是显示在布告上的内容",
-            "这是显示在布告上的内容","这是显示在布告上的内容","这是显示在布告上的内容",
-            "这是显示在布告上的内容","这是显示在布告上的内容","这是显示在布告上的内容"};  //显示的内容
+    private String content="这里是发布的公告,邓永恒大佬说太丑，所以也多一点的字，看能不能更漂亮一点但是一个公告，差不多也就这么多字了吧。。。";  //显示的内容
 
     private String[] issuer={"张三","张三","张三",
             "张三","张三","张三","张三","张三","张三"};  //发布者的名字
@@ -40,10 +38,10 @@ public class FoundViewFragment extends Fragment{
         SimpleAdapter simpleAdapter=new SimpleAdapter(getActivity(),lists,R.layout.issue_tips,keys,ids);
         listView.setAdapter(simpleAdapter);
 
-        for(int i=0;i<content.length;i++){
+        for(int i=0;i<issuer.length;i++){
             Map<String,Object> map=new HashMap<>();
 
-            map.put("contents",content[i]);
+            map.put("contents",content+i);
             map.put("issuers",issuer[i]);
             lists.add(map);
         }

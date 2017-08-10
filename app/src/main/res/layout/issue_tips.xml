@@ -11,13 +11,20 @@
         android:padding="10dp"
         android:background="@drawable/activity_manage_bg">
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="- 公告 -"/>
+        <TextView
             android:id="@+id/issue_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="这里是发布的公告" />
+            android:layout_marginTop="10dp"
+            android:text="这里是发布的公告,邓永恒大佬说太丑，所以也多一点的字，看能不能更漂亮一点
+                    但是一个公告，差不多也就这么多字了吧。。。" />
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="210dp"
             android:layout_height="wrap_content">
             <ImageView

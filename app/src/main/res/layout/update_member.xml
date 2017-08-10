@@ -2,17 +2,17 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
     android:columnCount="1"
-    android:rowCount="10"
+    android:rowCount="11"
     tools:context="com.nankai.clubmanager.activity.UpdateMemberActivity">
+
     <ScrollView>
     <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:columnCount="2"
         android:rowCount="10">
     <EditText
@@ -36,7 +36,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="fill"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
         android:src="@drawable/onein"
         android:layout_rowSpan="3"/>
     <EditText
@@ -92,7 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="fill"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="30dp"
         android:layout_columnSpan="2"
@@ -110,7 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="fill"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="30dp"
         android:layout_columnSpan="2"
@@ -128,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="fill"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="30dp"
         android:layout_columnSpan="2"
@@ -146,7 +145,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="fill"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="30dp"
         android:layout_columnSpan="2"
@@ -164,7 +163,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="fill"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="30dp"
         android:layout_columnSpan="2"
@@ -182,7 +181,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="30dp"
         android:layout_columnSpan="2"
