@@ -101,6 +101,7 @@ public class LoginActivity extends Activity {
                         editor.putInt("department",obj.getInt("department"));//把所在的部门存起来
                         editor.putBoolean("status",true);//登录的状态已经登录
                         editor.putString("name",obj.getString("name"));
+                        editor.putString("dptName",obj.getString("dptName"));
                         editor.commit();
                     } catch (JSONException e) {
                         e.printStackTrace();
