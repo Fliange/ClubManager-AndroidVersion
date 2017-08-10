@@ -1,5 +1,6 @@
 package com.nankai.clubmanager.fragment;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -7,12 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.IdRes;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -48,7 +45,7 @@ import okhttp3.Response;
  * Created by zhangjin on 2017/8/5.
  */
 
-public class RegistViewFragment extends Fragment{
+public class RegistViewFragment extends Activity {
 
     private TextView choosebirthday;
     private EditText number;
@@ -73,8 +70,8 @@ public class RegistViewFragment extends Fragment{
             if(msg.what == 1){
                 String result = (String) msg.obj;
                 if(result.equals("success")){
-                    Toast.makeText(RegistViewFragment.this.getActivity(),"报名成功",Toast.LENGTH_LONG).show();
-                    Intent intent=new Intent(RegistViewFragment.this.getActivity(), MainActivity.class);
+                    Toast.makeText(RegistViewFragment.this,"报名成功",Toast.LENGTH_LONG).show();
+                    Intent intent=new Intent(RegistViewFragment.this, MainActivity.class);
                     startActivity(intent);
                 }
             }
@@ -96,26 +93,25 @@ public class RegistViewFragment extends Fragment{
         }
     };
     OkHttpClient okHttpClient = new OkHttpClient();
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.regist_fragment, null);
-        context=this.getActivity();
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.regist_fragment);
         departmentData=new ArrayList<>();
-        choosebirthday = (TextView) view.findViewById(R.id.choosebirthday);
-        number= (EditText) view.findViewById(R.id.number);
-        name=(EditText) view.findViewById(R.id.name);
-        telphone=(EditText) view.findViewById(R.id.telphone);
-        introduction=(EditText) view.findViewById(R.id.introduction);
-        sex= (Spinner) view.findViewById(R.id.sex);
-        hometown=(Spinner) view.findViewById(R.id.hometown);
-        major=(Spinner) view.findViewById(R.id.major);
-        radioGroup= (RadioGroup) view.findViewById(R.id.radioGroup);
-        intent1=(Spinner) view.findViewById(R.id.intent1);
-        intent2=(Spinner) view.findViewById(R.id.intent2);
+        choosebirthday = (TextView) findViewById(R.id.choosebirthday);
+        number= (EditText) findViewById(R.id.number);
+        name=(EditText) findViewById(R.id.name);
+        telphone=(EditText) findViewById(R.id.telphone);
+        introduction=(EditText) findViewById(R.id.introduction);
+        sex= (Spinner) findViewById(R.id.sex);
+        hometown=(Spinner) findViewById(R.id.hometown);
+        major=(Spinner) findViewById(R.id.major);
+        radioGroup= (RadioGroup) findViewById(R.id.radioGroup);
+        intent1=(Spinner) findViewById(R.id.intent1);
+        intent2=(Spinner) findViewById(R.id.intent2);
 
-        confirmRegist= (Button) view.findViewById(R.id.confirmButton);
+        confirmRegist= (Button) findViewById(R.id.confirmButton);
         confirmRegist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -175,7 +171,7 @@ public class RegistViewFragment extends Fragment{
         choosebirthday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(getActivity(),
+                new DatePickerDialog(RegistViewFragment.this,
                         listener ,
                         cal .get(Calendar. YEAR ),
                         cal .get(Calendar. MONTH ),
@@ -183,7 +179,6 @@ public class RegistViewFragment extends Fragment{
                 ).show();
             }
         });
-        return view;
     }
 
     // 日期选择对话框的 DateSet 事件监听器

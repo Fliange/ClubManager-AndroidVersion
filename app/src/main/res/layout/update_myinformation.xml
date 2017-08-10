@@ -2,17 +2,16 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
     android:columnCount="1"
     android:rowCount="10"
     tools:context="com.nankai.clubmanager.activity.UpdateMemberActivity">
     <ScrollView>
     <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:columnCount="2"
         android:rowCount="10">
     <EditText
@@ -28,7 +27,7 @@
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
         android:paddingTop="4dip"
-        android:hint="学号"
+        android:hint="1511209"
         android:textSize="20sp" />
     <ImageView
         android:id="@+id/my_picture"
@@ -52,7 +51,7 @@
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
         android:paddingTop="4dip"
-        android:hint="姓名"
+        android:hint="拉普拉斯"
         android:textSize="20sp" />
     <EditText
         android:id="@+id/update_my_sex"
@@ -67,7 +66,7 @@
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
         android:paddingTop="4dip"
-        android:hint="性别"
+        android:hint="男"
         android:textSize="20sp" />
     <EditText
         android:id="@+id/update_my_college"
@@ -85,7 +84,7 @@
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
         android:paddingTop="4dip"
-        android:hint="专业"
+        android:hint="信息安全"
         android:textSize="20sp" />
     <EditText
         android:id="@+id/update_my_home"
@@ -103,7 +102,7 @@
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
         android:paddingTop="4dip"
-        android:hint="籍贯"
+        android:hint="西藏"
         android:textSize="20sp" />
     <EditText
         android:id="@+id/update_my_phone"
@@ -121,7 +120,7 @@
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
         android:paddingTop="4dip"
-        android:hint="电话"
+        android:hint="13825896245"
         android:textSize="20sp" />
     <EditText
         android:id="@+id/update_my_position"
@@ -139,7 +138,7 @@
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
         android:paddingTop="4dip"
-        android:hint="职务"
+        android:hint="中层"
         android:textSize="20sp" />
     <EditText
         android:id="@+id/update_my_birthday"
@@ -157,7 +156,7 @@
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
         android:paddingTop="4dip"
-        android:hint="生日"
+        android:hint="1995-05-24"
         android:textSize="20sp" />
     <EditText
         android:id="@+id/update_my_departmentid"
@@ -175,7 +174,7 @@
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
         android:paddingTop="4dip"
-        android:hint="部门ID"
+        android:hint="201"
         android:textSize="20sp" />
     <TextView
         android:id="@+id/update_my_sure"

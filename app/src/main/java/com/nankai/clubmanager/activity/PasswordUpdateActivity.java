@@ -60,7 +60,7 @@ public class PasswordUpdateActivity extends Activity {
             }
         }
     };
-    @Event(value={R.id.main_btn_login})
+    @Event(value={R.id.sure_update_psw})
     private void doEvent(View view){
         FormBody.Builder builder1 = new FormBody.Builder();
         FormBody formBody = builder1.add("username",username.getText().toString())

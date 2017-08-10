@@ -24,6 +24,8 @@ import android.widget.Toast;
 import com.nankai.clubmanager.R;
 import com.nankai.clubmanager.activity.LoginActivity;
 import com.nankai.clubmanager.activity.MyCollectionActivity;
+import com.nankai.clubmanager.activity.MyDepartmentActivity;
+import com.nankai.clubmanager.activity.MyInformationActivity;
 import com.nankai.clubmanager.activity.PasswordUpdateActivity;
 import com.nankai.clubmanager.extra.OkHttp;
 import com.nankai.clubmanager.viewPager.AboutUsViewPager;
@@ -53,6 +55,7 @@ public class HomePageFragment extends Fragment{
     private TextView myCollect;
     private TextView exit;
     private TextView about_us;
+    private TextView registEntrance;
     private static final int PHOTO_REQUEST_CAREMA = 1;// 拍照
     private static final int PHOTO_REQUEST_GALLERY = 2;// 从相册中选择
     private static final int PHOTO_REQUEST_CUT = 3;// 结果
@@ -80,8 +83,36 @@ public class HomePageFragment extends Fragment{
         myCollect=(TextView) view.findViewById(R.id.mycollection);
         exit=(TextView) view.findViewById(R.id.logout);
         about_us=(TextView)view.findViewById(R.id.about_us);
+        registEntrance=(TextView) view.findViewById(R.id.regist_entrance);
 
         sp1=getActivity().getSharedPreferences("loginInfor",MODE_PRIVATE);
+
+        //跳到个人信息
+        personalInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_myinf=new Intent(HomePageFragment.this.getActivity(), MyInformationActivity.class);
+                startActivity(intent_myinf);
+            }
+        });
+
+        //跳到我的部门
+        myDepartments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_mydep=new Intent(HomePageFragment.this.getActivity(), MyDepartmentActivity.class);
+                startActivity(intent_mydep);
+            }
+        });
+
+        //跳到修改密码界面
+        changePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_password = new Intent(HomePageFragment.this.getActivity(),PasswordUpdateActivity.class);
+                startActivity(intent_password);
+            }
+        });
 
         //跳转到收藏的活动的页面
         view.findViewById(R.id.mycollection).setOnClickListener(
@@ -100,6 +131,15 @@ public class HomePageFragment extends Fragment{
             public void onClick(View v) {
                 Intent intent_about=new Intent(HomePageFragment.this.getActivity(),AboutUsViewPager.class);
                 startActivity(intent_about);
+            }
+        });
+
+        //跳到报名界面
+        registEntrance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_tegist=new Intent(HomePageFragment.this.getActivity(),RegistViewFragment.class);
+                startActivity(intent_tegist);
             }
         });
 
