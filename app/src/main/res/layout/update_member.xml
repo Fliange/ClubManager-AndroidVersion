@@ -3,12 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="460dp"
+    android:layout_height="match_parent"
 
-    android:columnCount="2"
+    android:columnCount="1"
     android:rowCount="10"
     tools:context="com.nankai.clubmanager.activity.UpdateMemberActivity">
+    <ScrollView>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
 
+        android:columnCount="2"
+        android:rowCount="10">
     <EditText
         android:id="@+id/update_member_id"
         android:layout_width="180dp"
@@ -22,9 +28,10 @@
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
         android:paddingTop="4dip"
-        android:text="学号"
+        android:hint="学号"
         android:textSize="20sp" />
     <ImageView
+        android:id="@+id/picture"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="fill"
@@ -45,7 +52,7 @@
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
         android:paddingTop="4dip"
-        android:text="姓名"
+        android:hint="姓名"
         android:textSize="20sp" />
     <EditText
         android:id="@+id/update_member_sex"
@@ -60,7 +67,7 @@
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
         android:paddingTop="4dip"
-        android:text="性别"
+        android:hint="性别"
         android:textSize="20sp" />
     <EditText
         android:id="@+id/update_member_college"
@@ -78,7 +85,7 @@
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
         android:paddingTop="4dip"
-        android:text="专业"
+        android:hint="专业"
         android:textSize="20sp" />
     <EditText
         android:id="@+id/update_member_home"
@@ -96,7 +103,7 @@
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
         android:paddingTop="4dip"
-        android:text="籍贯"
+        android:hint="籍贯"
         android:textSize="20sp" />
     <EditText
         android:id="@+id/update_member_phone"
@@ -114,7 +121,7 @@
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
         android:paddingTop="4dip"
-        android:text="电话"
+        android:hint="电话"
         android:textSize="20sp" />
     <EditText
         android:id="@+id/update_member_position"
@@ -132,7 +139,7 @@
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
         android:paddingTop="4dip"
-        android:text="职务"
+        android:hint="职务"
         android:textSize="20sp" />
     <EditText
         android:id="@+id/update_member_birthday"
@@ -150,7 +157,7 @@
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
         android:paddingTop="4dip"
-        android:text="生日"
+        android:hint="生日"
         android:textSize="20sp" />
     <EditText
         android:id="@+id/update_member_departmentid"
@@ -168,9 +175,9 @@
         android:paddingLeft="30dip"
         android:paddingRight="30dip"
         android:paddingTop="4dip"
-        android:text="部门ID"
+        android:hint="部门ID"
         android:textSize="20sp" />
-    <EditText
+    <TextView
         android:id="@+id/update_member_sure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -188,5 +195,6 @@
         android:paddingTop="4dip"
         android:text="完成"
         android:textSize="20sp" />
-
+</GridLayout>
+    </ScrollView>
 </GridLayout>

@@ -94,6 +94,8 @@ public class MainActivity extends FragmentActivity {
         fragmentManager = getSupportFragmentManager();
         transaction = fragmentManager.beginTransaction();
         Fragment init = new HomePageFragment();
+        mHomePageView.setBigIcon(R.drawable.home_icon_clicked);
+        mHomePageView.setSmallIcon(R.drawable.home_icon_clicked);
         transaction.replace(R.id.fragmentPager,init,"fragment");
         transaction.commit();
 
@@ -200,6 +202,8 @@ public class MainActivity extends FragmentActivity {
                 String activityName, activityPic,IMAGE_URL,activityOrganization,activityIntroduction,activityContent;
                 int activityId;
                 Drawable drawable;
+                //清空之前的列表
+                list_map.clear();
                 for (int i = 0; i < arrayList.size(); i++) {
                     Map<String, Object> activity = arrayList.get(i);
                     activityPic = (String) activity.get("ActivityPicture");
@@ -214,12 +218,10 @@ public class MainActivity extends FragmentActivity {
                         R.layout.homepage_list_item, /*设置具体某个items的布局，需要是新的布局，而不是ListView控件的布局*/
                         new String[]{"pic","ActivityName","ActivityOrganization","ActivityIntroduction"}, /*传入上面定义的键值对的键名称,会自动根据传入的键找到对应的值*/
                         new int[]{R.id.item_img,R.id.item_title,R.id.item_author,R.id.item_text});/*传入items布局文件中需要指定传入的控件，这里直接上id即可*/
-
-
                         //加载页面
                         try
                         {
-                            Thread.currentThread().sleep(2000);//毫秒
+                            Thread.currentThread().sleep(1000);//毫秒
                         }
                         catch(Exception e){}
                         MainActivity.this.runOnUiThread(new Runnable() {
@@ -230,8 +232,6 @@ public class MainActivity extends FragmentActivity {
                                 avi.hide();
                             }
                         });
-
-
 
                 // or avi.smoothToHide();
                 //ViewBinder该类可以帮助SimpleAdapter加载图片(Drawable)
@@ -265,6 +265,7 @@ public class MainActivity extends FragmentActivity {
                                 Log.i("活动ID-----",""+actId);
                                 Intent intent = new Intent(MainActivity.this,ActDetailActivity.class);
                                 Bundle bundle = new Bundle();
+                                bundle.putInt("ActivityId", actId);
                                 bundle.putString("ActivityPicture", (String) map.get("ActivityPicture"));
                                 bundle.putString("ActivityName", (String) map.get("ActivityName"));
                                 bundle.putString("ActivityContent", (String) map.get("ActivityContent"));

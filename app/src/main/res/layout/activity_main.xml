@@ -9,7 +9,7 @@
     <!--中间内容-->
     <FrameLayout android:id="@+id/fragmentPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="550dp"
         android:layout_above="@+id/bottom_navi"/>
 
 
