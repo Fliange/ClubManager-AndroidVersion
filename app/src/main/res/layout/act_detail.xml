@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
-                android:src="@drawable/pre_thumb_up" />
+                android:src="@drawable/zan1" />
             <!--点赞数-->
             <TextView
                 android:id="@+id/thumb_up_count"
@@ -89,6 +89,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="158" />
+            <ImageView
+                android:id="@+id/collection"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp" />
+
         </LinearLayout>
 
         <View
