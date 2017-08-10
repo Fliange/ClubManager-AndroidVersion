@@ -1,5 +1,6 @@
 package com.nankai.clubmanager.fragment;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -24,11 +25,9 @@ public class NewRegistFragment extends Fragment {
     private int currentPosition;
     MemberDialog memberDialog;
     private List<Map<String,Object>> lists=new ArrayList<>();
-    private int[] imgIds={R.drawable.head_image,R.drawable.head_image,R.drawable.head_image,
-            R.drawable.head_image,R.drawable.head_image,R.drawable.head_image,R.drawable.head_image,
-            R.drawable.head_image,R.drawable.head_image};
-    private String[] name={"张三","张三","张三",
-            "张三","张三","张三","张三","张三","张三"};
+    private List<Drawable> imgIds=new ArrayList<>();
+    private List<String> name=new ArrayList<>();
+    private List<Integer> number=new ArrayList<>();
 
     @Nullable
     @Override
@@ -42,10 +41,11 @@ public class NewRegistFragment extends Fragment {
         SimpleAdapter simpleAdapter=new SimpleAdapter(getActivity(),lists,R.layout.list_item,keys,ids);
         listView.setAdapter(simpleAdapter);
 
-        for(int i=0;i<imgIds.length;i++){
+        for(int i=0;i<number.size();i++){
             Map<String,Object> map=new HashMap<>();
-            map.put("img",imgIds[i]);
-            map.put("content",name[i]);
+
+            map.put("img",imgIds.get(i));
+            map.put("content",name.get(i));
             lists.add(map);
         }
         return  view;
