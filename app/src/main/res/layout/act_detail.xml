@@ -183,6 +183,10 @@
                         android:text="158"
                         android:textSize="13sp"
                         android:textColor="#666666"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/collection"/>
                 </LinearLayout>
             </LinearLayout>
             <!--底部结束-->
