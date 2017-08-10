@@ -53,6 +53,9 @@ public class HomePageFragment extends Fragment{
     private TextView myCollect;
     private TextView exit;
     private TextView about_us;
+    private TextView name;
+    private TextView department;
+
     private static final int PHOTO_REQUEST_CAREMA = 1;// 拍照
     private static final int PHOTO_REQUEST_GALLERY = 2;// 从相册中选择
     private static final int PHOTO_REQUEST_CUT = 3;// 结果
@@ -80,9 +83,12 @@ public class HomePageFragment extends Fragment{
         myCollect=(TextView) view.findViewById(R.id.mycollection);
         exit=(TextView) view.findViewById(R.id.logout);
         about_us=(TextView)view.findViewById(R.id.about_us);
+        name=(TextView)view.findViewById(R.id.name);
+        department=(TextView)view.findViewById(R.id.department);
 
         sp1=getActivity().getSharedPreferences("loginInfor",MODE_PRIVATE);
-
+        name.setText(sp1.getString("name","hello"));
+        department.setText(sp1.getString("dptName","登录吗"));
         //跳转到收藏的活动的页面
         view.findViewById(R.id.mycollection).setOnClickListener(
                 new View.OnClickListener() {
@@ -157,7 +163,7 @@ public class HomePageFragment extends Fragment{
             case R.id.mycollection:
                 break;
             case R.id.logout:
-                SharedPreferences.Editor editor=sp.edit();
+                SharedPreferences.Editor editor=sp1.edit();
                 editor.putBoolean("status",false);//登录状态改为未登录
                 editor.commit();
                 Intent intent1=new Intent(HomePageFragment.this.getActivity(), LoginActivity.class);

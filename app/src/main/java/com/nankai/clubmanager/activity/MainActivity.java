@@ -1,6 +1,7 @@
 package com.nankai.clubmanager.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -58,6 +59,8 @@ public class MainActivity extends FragmentActivity {
     @ViewInject(R.id.view_manage)
     private NaviView mManageView;//管理
 
+    private SharedPreferences sp;
+
 /*    @ViewInject(R.id.view_regist)
     private NaviView mRegistView;//报名*/
 
@@ -76,6 +79,7 @@ public class MainActivity extends FragmentActivity {
         x.view().inject(this);
         initUi();
         setHomePage();
+
     }
 
     //初始化UI组件
