@@ -69,22 +69,7 @@
                     android:text="张三"
                     android:textSize="20sp"/>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:layout_marginLeft="30dp">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/me_icon"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/modify_password"
-                    android:layout_marginLeft="15dp"
-                    android:text="修改个人信息" />
-            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -100,6 +85,22 @@
                     android:id="@+id/modify_information"
                     android:layout_marginLeft="15dp"
                     android:text="修改个人信息" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/update_password"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/modify_password"
+                    android:layout_marginLeft="15dp"
+                    android:text="修改密码" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"

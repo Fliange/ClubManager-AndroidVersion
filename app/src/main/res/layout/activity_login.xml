@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#7adfb8"
+    android:background="#000000"
     tools:context="com.nankai.clubmanager.activity.LoginActivity">
 
     <include
@@ -15,6 +15,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_below="@+id/login_title"
         android:orientation="vertical" >
 
@@ -27,7 +28,7 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dip"
+            android:layout_marginTop="15dip"
             android:gravity="center"
             android:text="FIREFLY FOREST"
             android:textColor="#ffffff"
@@ -45,7 +46,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" >
+        android:layout_marginTop="220dp" >
 
         <include
 
@@ -66,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/input_layout"
             android:layout_centerInParent="true"
-            android:layout_marginTop="20dip"
+            android:layout_marginTop="30dip"
             android:background="@drawable/text_bg"
             android:gravity="center"
             android:paddingBottom="4dip"
