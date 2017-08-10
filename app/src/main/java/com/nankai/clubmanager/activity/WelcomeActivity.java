@@ -54,8 +54,6 @@ public class WelcomeActivity extends Activity {
         final Runnable myRun=new Runnable(){
             @Override
             public void run(){
-                //recLen--;
-                //jump.setText(recLen+"秒 点击跳过");
                 Intent in2 = new Intent(WelcomeActivity.this, MainActivity.class);
                 startActivity(in2);
                 finish();
