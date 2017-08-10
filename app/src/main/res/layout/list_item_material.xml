@@ -6,24 +6,31 @@
         android:layout_width="match_parent" android:layout_height="80dp">
         <!-- Bottom View Start-->
         <LinearLayout
-            android:background="#66ddff00"
             android:id="@+id/material_item_bottom_wrapper"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="10dp"
-            android:orientation="vertical">
+            android:layout_width="150dp"
+            android:layout_height="100dp">
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:background="#707070"
+                android:layout_width="75dp"
+                android:layout_height="match_parent">
                 <ImageView
                     android:id="@+id/material_item_view"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="22dp"
                     android:src="@drawable/view"/>
+            </LinearLayout>
+            <LinearLayout
+                android:background="#FF0000"
+                android:layout_width="75dp"
+                android:layout_height="match_parent">
                 <ImageView
                     android:id="@+id/material_item_delete"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="23dp"
                     android:src="@drawable/delete"/>
             </LinearLayout>
         </LinearLayout>
