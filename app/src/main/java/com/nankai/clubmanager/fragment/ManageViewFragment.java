@@ -68,7 +68,7 @@ public class ManageViewFragment extends Fragment {
         // 设置Tab标题文字的大小
         tabs.setTextSize((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 16, dm));
         // 设置Tab Indicator的颜色
-        tabs.setIndicatorColor(Color.parseColor("#d83737"));//#d83737   #d83737(绿)
+        tabs.setIndicatorColor(Color.parseColor("#808080"));//#d83737   #d83737(绿)
 //        // 设置选中Tab文字的颜色 (这是我自定义的一个方法)
 //        tabs.setSelectedTextColor(Color.parseColor("#ffffff"));
         // 取消点击Tab时的背景色
@@ -81,7 +81,7 @@ public class ManageViewFragment extends Fragment {
             super(fm);
         }
 
-        private final String[] titles = { "纳新", "成员", "活动" ,"物资"};
+        private final String[] titles = { "  纳新", " 成员 ", " 活动 " ,"  物资"};
 
         @Override
         public CharSequence getPageTitle(int position) {

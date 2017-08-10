@@ -6,16 +6,10 @@
     android:layout_height="match_parent"
     tools:context="com.nankai.clubmanager.activity.MainActivity">
 
-    <include
-        android:id="@+id/title_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/titlebar_main"/>
-
     <!--中间内容-->
     <FrameLayout android:id="@+id/fragmentPager"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="match_parent"
         android:layout_above="@+id/bottom_navi"/>
 
 

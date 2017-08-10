@@ -13,13 +13,20 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         tools:context="com.nankai.clubmanager.fragment.HomePageFragment">
-
     <!--内容-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="#FFFFFF">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <include
+                android:id="@+id/title_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/titlebar_main"/>
         <!--加载页面-->
         <com.wang.avi.AVLoadingIndicatorView
             android:id="@+id/avi"
@@ -28,16 +35,19 @@
             style="@style/AVLoadingIndicatorView"
             android:layout_marginTop="200dp"
             android:visibility="visible"
-            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
             app:indicatorName="BallClipRotateIndicator"
             app:indicatorColor="#999999">
         </com.wang.avi.AVLoadingIndicatorView>
         <!--活动list-->
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/homepage_listview">
-        </ListView>
+
+            <ListView
+                android:layout_below="@+id/title_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/homepage_listview">
+            </ListView>
+        </RelativeLayout>
     </LinearLayout>
 
     <!--侧滑菜单-->
@@ -179,6 +189,17 @@
                     android:id="@+id/logout"
                     android:layout_marginLeft="17dp"
                     android:text="登出" />
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="70dp"
+                    android:src="@drawable/regist"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/regist_entrance"
+                    android:layout_marginLeft="17dp"
+                    android:text="报名" />
             </LinearLayout>
         </LinearLayout>
 

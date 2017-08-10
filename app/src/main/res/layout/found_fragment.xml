@@ -8,7 +8,13 @@
     android:background="#FFFFFF"
     tools:context="com.nankai.clubmanager.fragment.FoundViewFragment">
 
+    <include
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/titlebar_main"/>
     <ListView
+        android:layout_below="@+id/title_bar"
         android:id="@+id/found_listView"
         android:layout_above="@+id/issue_input"
         android:layout_width="match_parent"
@@ -35,7 +41,8 @@
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:layout_marginTop="15dp"
+            android:background="@drawable/select_btn"
+            android:layout_marginTop="13dp"
             android:layout_marginLeft="10dp"
             android:text="发 送"/>
     </LinearLayout>

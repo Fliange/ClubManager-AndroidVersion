@@ -59,26 +59,60 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <TextView
-                    android:id="@+id/manage_material_org"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="50dp"
-                    android:textSize="10sp"/>
-                <TextView
-                    android:id="@+id/manage_material_count"
+                    android:layout_marginTop="5dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="20dp"
+                        android:textSize="15dp"
+                        android:text="所属部门："/>
+                    <TextView
+                        android:id="@+id/manage_material_org"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="学生会宣传部"
+                        android:textSize="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="20dp"
+                        android:textSize="15dp"
+                        android:text="X"/>
+                    <TextView
+                        android:id="@+id/manage_material_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="15dp"
+                        android:text="100"/>
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:textSize="10sp"/>
-                <TextView
-                    android:id="@+id/manage_materail_extra"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="10dp"
-                    android:textSize="10sp"/>
+                    android:layout_marginTop="5dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="20dp"
+                        android:text="备注："/>
+                    <TextView
+                        android:id="@+id/manage_materail_extra"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:text="这是我们部门的东西"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
         <!-- Surface View End -->
