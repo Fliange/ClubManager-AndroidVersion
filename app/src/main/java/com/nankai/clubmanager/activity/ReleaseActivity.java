@@ -32,7 +32,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.xutils.view.annotation.ContentView;
-import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -196,6 +195,13 @@ public class ReleaseActivity extends Activity {
             @Override
             public void onTextChange(String text) {
                 mPreview.setText(text);
+            }
+        });
+
+        findViewById(R.id.release_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 
@@ -600,11 +606,5 @@ public class ReleaseActivity extends Activity {
         lp.alpha = 0.8f;
         window.setAttributes(lp);
         submitActivity.show();
-    }
-
-    @Event(value = {R.id.release_back},type = View.OnClickListener.class)
-    private void myfinish()
-    {
-        finish();
     }
 }

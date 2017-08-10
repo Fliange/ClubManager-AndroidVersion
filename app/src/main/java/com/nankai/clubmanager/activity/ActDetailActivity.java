@@ -6,10 +6,15 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.nankai.clubmanager.R;
 
 import org.xutils.view.annotation.ContentView;
@@ -19,6 +24,8 @@ import org.xutils.x;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 
 import jp.wasabeef.richeditor.RichEditor;
 import okhttp3.Call;
@@ -44,6 +51,10 @@ public class ActDetailActivity extends Activity {
     private TextView thumbUpCount;
     @ViewInject(R.id.collection)
     private  ImageView collection;
+    @ViewInject(R.id.comment_listView)
+    private ListView commentListView;
+    @ViewInject(R.id.comment_input)
+    private EditText commentInput;
 
     //点赞/取消
     private boolean like = false;
@@ -58,7 +69,6 @@ public class ActDetailActivity extends Activity {
     private int ActivityId;
     //用来进行与后端通信的okHttpClient
     private OkHttpClient okHttpClient = new OkHttpClient();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +109,7 @@ public class ActDetailActivity extends Activity {
             }
         }).start();
         initCollection();
+        getAllMessage();
     }
 
     //返回方法
@@ -140,19 +151,12 @@ public class ActDetailActivity extends Activity {
             count--;
         }
         thumbUpCount.setText(count+"");
-       /* final int newCount = count;
-        ActDetailActivity.this.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        });*/
     }
 
     //初始化收藏状态
     private void initCollection(){
         String user = sp.getString("username", "");
-        if (user == null)
+        if (user.equals(""))
         {
             Toast.makeText(this,"游客状态游览",Toast.LENGTH_SHORT);
         }
@@ -177,7 +181,7 @@ public class ActDetailActivity extends Activity {
     @Event(value = {R.id.collection},type = View.OnClickListener.class)
     private void select(View view){
         String user = sp.getString("username", "");
-        if (user == null)
+        if (user.equals(""))
         {
             Toast.makeText(this,"未登录，无法收藏",Toast.LENGTH_SHORT);
         }
@@ -247,23 +251,91 @@ public class ActDetailActivity extends Activity {
                         @Override
                         public void run() {
                             collection.setImageResource(R.drawable.like2);
-                            Toast.makeText(ActDetailActivity.this,"有收藏"+msg,Toast.LENGTH_SHORT);
+                            Toast.makeText(ActDetailActivity.this,"有收藏"+msg,Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
-                if(msg.equals("writefail\r\n"))
+                else if(msg.equals("writefail\r\n"))
                 {//没收藏记录
                     select = false;
                     ActDetailActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             collection.setImageResource(R.drawable.like);
-                            Toast.makeText(ActDetailActivity.this,"没收藏"+msg,Toast.LENGTH_SHORT);
+                            Toast.makeText(ActDetailActivity.this,"没收藏"+msg,Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                else if(msg.equals("chatSuccess\r\n"))
+                {
+                    //重新拿数据
+                    getAllMessage();
+                }
+                else if(msg.equals(""))
+                {
+
+                }
+                else {
+                    /*将json字符串转换为List<Map<String,Object>> */
+                    final List<Map<String, Object>> arrayList = JSON.parseObject(msg,
+                            new TypeReference<List<Map<String, Object>>>() {});
+
+
+                    //修改UI控件
+                    ActDetailActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Log.i("图片",arrayList.toString());
+                            SimpleAdapter simpleAdapter = new SimpleAdapter(
+                                    ActDetailActivity.this,          //传入一个上下文作为参数
+                                    arrayList,              //传入相对应的数据源，这个数据源不仅仅是数据而且还是和界面相耦合的混合体。
+                                    R.layout.issue_tips,    //设置具体某个items的布局，需要是新的布局，而不是ListView控件的布局
+                                    new String[]{"MessageAuthor","MessageContent"}, //*传入上面定义的键值对的键名称,会自动根据传入的键找到对应的值*//**//*
+                                    new int[]{R.id.issuer,R.id.issue_content});//传入items布局文件中需要指定传入的控件，这里直接上id即可*//**//*
+                            commentListView.setAdapter(simpleAdapter);
                         }
                     });
                 }
 
             }
         });
+    }
+
+    //用于从数据库拿数据 并显示到评论
+    private void getAllMessage()
+    {
+        //从数据库读取活动信息
+        FormBody.Builder builder1 = new FormBody.Builder();
+        FormBody formBody = builder1
+                .build();
+        Request.Builder builder = new Request.Builder();
+        Request request1 = builder.url("http://192.168.40.72:8080/PClubManager/Chat_findAll")
+                .post(formBody)
+                .build();
+        ActDetailActivity.this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                commentInput.setText("");
+            }
+        });
+        exec(request1);
+    }
+
+    //为发送公告按钮添加监听
+    @Event(value = {R.id.send_comment},type = View.OnClickListener.class)
+    private void sendComment(View v) {
+            //监听按钮，按钮按下时，发送输入框里面的数据，同时从数据库查询，将查询的结果显示出来
+            //使用post的方式，向后端action发起传输请求
+            FormBody.Builder builder1 = new FormBody.Builder();
+            String text = commentInput.getText().toString();
+            FormBody formBody = builder1
+                    .add("content", text)
+                    .add("userId", String.valueOf(userId))
+                    .build();
+            Request.Builder builder = new Request.Builder();
+            Request request = builder.url("http://192.168.40.72:8080/PClubManager/Chat_test")
+                    .post(formBody)
+                    .build();
+            exec(request);
     }
 }
