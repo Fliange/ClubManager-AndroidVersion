@@ -74,8 +74,7 @@ public class ActDetailActivity extends Activity {
         String ActivityOrganization = bundle.getString("ActivityOrganization");
         //找到记录登录信息的文件
         sp=getSharedPreferences("loginInfor",MODE_PRIVATE);
-        //从文件里找到登录者的id
-        userId = Integer.parseInt(sp.getString("username",""));
+
 
         activityDetailName.setText(ActivityName);
         richActivityDetailContent.setHtml(ActivityContent);
@@ -152,55 +151,72 @@ public class ActDetailActivity extends Activity {
 
     //初始化收藏状态
     private void initCollection(){
-        //从数据库查询有没有这个人对这个活动的收藏记录
-        FormBody.Builder builder1 = new FormBody.Builder();
-        FormBody formBody = builder1
-                .add("activityId", String.valueOf(ActivityId))
-                .add("userId",String.valueOf(userId))
-                .build();
-        Request.Builder builder = new Request.Builder();
-        Request request = builder.url("http://192.168.40.72:8080/PClubManager/Collection_findCollectionByUserAndActivity")
-                .post(formBody)
-                .build();
-        exec(request);
+        String user = sp.getString("username", "");
+        if (user == null)
+        {
+            Toast.makeText(this,"游客状态游览",Toast.LENGTH_SHORT);
+        }
+        else {
+            //从文件里找到登录者的id
+            userId = Integer.parseInt(sp.getString("username", ""));
+            //从数据库查询有没有这个人对这个活动的收藏记录
+            FormBody.Builder builder1 = new FormBody.Builder();
+            FormBody formBody = builder1
+                    .add("activityId", String.valueOf(ActivityId))
+                    .add("userId", String.valueOf(userId))
+                    .build();
+            Request.Builder builder = new Request.Builder();
+            Request request = builder.url("http://192.168.40.72:8080/PClubManager/Collection_findCollectionByUserAndActivity")
+                    .post(formBody)
+                    .build();
+            exec(request);
+        }
     }
 
     //收藏方法
     @Event(value = {R.id.collection},type = View.OnClickListener.class)
     private void select(View view){
-        //收藏状态
-        boolean like;
-        if (!select){
-            select = true;
-            collection.setImageResource(R.drawable.like2);
-            //使用post的方式，向后端action发起传输请求
-            FormBody.Builder builder1 = new FormBody.Builder();
-            FormBody formBody = builder1
-                    .add("activityId", String.valueOf(ActivityId))
-                    .add("userId",String.valueOf(userId))
-                    .add("state",String.valueOf(select))
-                    .build();
-            Request.Builder builder = new Request.Builder();
-            Request request = builder.url("http://192.168.40.72:8080/PClubManager/Collection_select")
-                    .post(formBody)
-                    .build();
-            exec(request);
+        String user = sp.getString("username", "");
+        if (user == null)
+        {
+            Toast.makeText(this,"未登录，无法收藏",Toast.LENGTH_SHORT);
         }
-        else{
-            select = false;
-            collection.setImageResource(R.drawable.like);
-            //使用post的方式，向后端action发起传输请求
-            FormBody.Builder builder1 = new FormBody.Builder();
-            FormBody formBody = builder1
-                    .add("activityId", String.valueOf(ActivityId))
-                    .add("userId",String.valueOf(userId))
-                    .add("state",String.valueOf(select))
-                    .build();
-            Request.Builder builder = new Request.Builder();
-            Request request = builder.url("http://192.168.40.72:8080/PClubManager/Collection_select")
-                    .post(formBody)
-                    .build();
-            exec(request);
+        else {
+            //从文件里找到登录者的id
+            userId = Integer.parseInt(user);
+            //收藏状态
+            boolean like;
+            if (!select) {
+                select = true;
+                collection.setImageResource(R.drawable.like2);
+                //使用post的方式，向后端action发起传输请求
+                FormBody.Builder builder1 = new FormBody.Builder();
+                FormBody formBody = builder1
+                        .add("activityId", String.valueOf(ActivityId))
+                        .add("userId", String.valueOf(userId))
+                        .add("state", String.valueOf(select))
+                        .build();
+                Request.Builder builder = new Request.Builder();
+                Request request = builder.url("http://192.168.40.72:8080/PClubManager/Collection_select")
+                        .post(formBody)
+                        .build();
+                exec(request);
+            } else {
+                select = false;
+                collection.setImageResource(R.drawable.like);
+                //使用post的方式，向后端action发起传输请求
+                FormBody.Builder builder1 = new FormBody.Builder();
+                FormBody formBody = builder1
+                        .add("activityId", String.valueOf(ActivityId))
+                        .add("userId", String.valueOf(userId))
+                        .add("state", String.valueOf(select))
+                        .build();
+                Request.Builder builder = new Request.Builder();
+                Request request = builder.url("http://192.168.40.72:8080/PClubManager/Collection_select")
+                        .post(formBody)
+                        .build();
+                exec(request);
+            }
         }
     }
 

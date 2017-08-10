@@ -92,5 +92,8 @@ dependencies {
 
 //加载页面
 dependencies {
+    compile 'com.android.support.constraint:constraint-layout:+'
+}
+dependencies {
     compile 'com.wang.avi:library:2.1.3'
 }

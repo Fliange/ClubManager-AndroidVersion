@@ -305,4 +305,6 @@ public class MainActivity extends FragmentActivity {
         Intent intent = new Intent(MainActivity.this,ReleaseActivity.class);
         startActivity(intent);
     }
+
+
 }
