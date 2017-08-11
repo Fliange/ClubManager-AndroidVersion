@@ -18,60 +18,66 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
 
+            <!--学号-->
             <LinearLayout
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp">
-
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="学号"
-                    android:textSize="20dp" />
-
+                    android:textSize="18sp" />
                 <EditText
                     android:id="@+id/number"
-                    android:layout_width="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="260dp"
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
+            <!--姓名-->
             <LinearLayout
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="姓名"
-                    android:textSize="20dp" />
-
+                    android:textSize="18sp" />
                 <EditText
                     android:id="@+id/name"
-                    android:layout_width="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="260dp"
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
+            <!--性别-->
             <LinearLayout
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="性别"
-                    android:textSize="20dp" />
-
+                    android:textSize="18sp" />
                 <Spinner
                     android:id="@+id/sex"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="260dp"
+                    android:layout_height="45dp"
+                    android:background="#ffffff"
                     android:entries="@array/sex"></Spinner>
             </LinearLayout>
 
@@ -84,13 +90,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
                     android:text="籍贯"
-                    android:textSize="20dp" />
+                    android:textSize="18sp" />
 
                 <Spinner
                     android:id="@+id/hometown"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="260dp"
+                    android:layout_height="45dp"
+                    android:background="#ffffff"
                     android:entries="@array/home"></Spinner>
             </LinearLayout>
 
@@ -98,17 +107,18 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="电话"
-                    android:textSize="20dp" />
-
+                    android:textSize="18sp" />
                 <EditText
                     android:id="@+id/telphone"
-                    android:layout_width="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="260dp"
                     android:layout_height="wrap_content"></EditText>
             </LinearLayout>
 
@@ -116,18 +126,21 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="专业"
-                    android:textSize="20dp" />
+                    android:textSize="18sp" />
 
                 <Spinner
                     android:id="@+id/major"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="260dp"
+                    android:background="#ffffff"
+                    android:layout_height="45dp"
                     android:entries="@array/college"></Spinner>
             </LinearLayout>
 
@@ -135,17 +148,19 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="生日"
-                    android:textSize="20dp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/choosebirthday"
-                    android:layout_width="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="260dp"
                     android:layout_height="wrap_content"></TextView>
             </LinearLayout>
 
@@ -153,17 +168,19 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="志愿1"
-                    android:textSize="20dp" />
+                    android:textSize="18sp" />
 
                 <Spinner
                     android:id="@+id/intent1"
-                    android:layout_width="match_parent"
+                    android:layout_width="260dp"
+                    android:background="#ffffff"
                     android:layout_height="wrap_content"></Spinner>
             </LinearLayout>
 
@@ -171,17 +188,19 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="志愿2"
-                    android:textSize="20dp" />
+                    android:textSize="18sp" />
 
                 <Spinner
                     android:id="@+id/intent2"
-                    android:layout_width="match_parent"
+                    android:layout_width="260dp"
+                    android:background="#ffffff"
                     android:layout_height="wrap_content"></Spinner>
             </LinearLayout>
 
@@ -189,13 +208,14 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="是否服从调剂"
-                    android:textSize="20dp" />
+                    android:textSize="18sp" />
 
                 <RadioGroup
                     android:id="@+id/radioGroup"
@@ -233,7 +253,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="18sp"
                 android:text="确认报名" />
         </LinearLayout>
     </ScrollView>
