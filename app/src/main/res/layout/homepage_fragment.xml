@@ -24,8 +24,6 @@
             android:layout_height="wrap_content">
             <include
                 android:id="@+id/title_bar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 layout="@layout/titlebar_main"/>
         <!--加载页面-->
         <com.wang.avi.AVLoadingIndicatorView
@@ -40,7 +38,6 @@
             app:indicatorColor="#999999">
         </com.wang.avi.AVLoadingIndicatorView>
         <!--活动list-->
-
             <ListView
                 android:layout_below="@+id/title_bar"
                 android:layout_width="match_parent"

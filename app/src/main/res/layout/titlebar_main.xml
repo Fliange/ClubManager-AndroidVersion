@@ -2,20 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="40dp"
     android:background="@drawable/titlebar_bg"
     android:padding="5dp">
 
     <com.nankai.library.RoundImageView
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/ic_launcher"
+        android:src="@drawable/head_image"
         android:id="@+id/pic"/>
     <ImageView
         android:id="@+id/release_activity"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:src="@drawable/add"
         android:layout_marginLeft="325dp"
         android:onClick="releaseActivity"/>

@@ -289,9 +289,9 @@ public class ActDetailActivity extends Activity {
                             SimpleAdapter simpleAdapter = new SimpleAdapter(
                                     ActDetailActivity.this,          //传入一个上下文作为参数
                                     arrayList,              //传入相对应的数据源，这个数据源不仅仅是数据而且还是和界面相耦合的混合体。
-                                    R.layout.issue_tips,    //设置具体某个items的布局，需要是新的布局，而不是ListView控件的布局
+                                    R.layout.list_item_comment ,   //设置具体某个items的布局，需要是新的布局，而不是ListView控件的布局
                                     new String[]{"MessageAuthor","MessageContent"}, //*传入上面定义的键值对的键名称,会自动根据传入的键找到对应的值*//**//*
-                                    new int[]{R.id.issuer,R.id.issue_content});//传入items布局文件中需要指定传入的控件，这里直接上id即可*//**//*
+                                    new int[]{R.id.item_content_comment,R.id.item_content_details});//传入items布局文件中需要指定传入的控件，这里直接上id即可*//**//*
                             commentListView.setAdapter(simpleAdapter);
                         }
                     });

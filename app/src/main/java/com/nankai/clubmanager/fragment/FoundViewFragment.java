@@ -53,6 +53,7 @@ public class FoundViewFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.found_fragment, container,false);
         messageListView = (ListView) view.findViewById(R.id.found_listView);
+        messageInput = (EditText) view.findViewById(R.id.message_input);
 
         //轮播图
         BannerLayout bannerLayout1 = (BannerLayout) view.findViewById(R.id.banner1);
