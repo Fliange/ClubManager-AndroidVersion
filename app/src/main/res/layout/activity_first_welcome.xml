@@ -12,5 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"/>
+    <TextView
+        android:id="@+id/btn_start"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:textColor="#6a6a6a"
+        android:textSize="20sp"
+        android:text="开启应用"/>
 
 </RelativeLayout>

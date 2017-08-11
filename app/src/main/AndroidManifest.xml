@@ -15,15 +15,11 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
         <activity android:name=".activity.LoginActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".activity.ChatRoomActivity" />
         <activity android:name=".activity.MainActivity"
             android:theme="@style/AppTheme">
-
 
         </activity>
         <activity
@@ -31,8 +27,13 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" >
         </activity>
         <activity android:name=".activity.ChangeImageActivity" />
-        <activity android:name=".activity.FirstWelcomeActivity"></activity>
+        <activity android:name=".activity.FirstWelcomeActivity">
+        </activity>
         <activity android:name=".activity.WelcomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity

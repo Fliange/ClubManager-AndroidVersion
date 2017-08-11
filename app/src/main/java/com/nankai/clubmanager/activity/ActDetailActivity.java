@@ -338,4 +338,19 @@ public class ActDetailActivity extends Activity {
                     .build();
             exec(request);
     }
+
+//    /**
+//     * 分享到QQ
+//     * @param v
+//     */
+//    public void qqShare(View v) {
+//        final Bundle params = new Bundle();
+//        params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, QQShare.SHARE_TO_QQ_TYPE_DEFAULT);//分享的类型
+//        params.putString(QQShare.SHARE_TO_QQ_TITLE, "然了个然CSDN博客");//分享标题
+//        params.putString(QQShare.SHARE_TO_QQ_SUMMARY,"不管是怎样的过程,最终目的还是那个理想的结果。");//要分享的内容摘要
+//        params.putString(QQShare.SHARE_TO_QQ_TARGET_URL,"http://blog.csdn.net/sandyran");//内容地址
+//        params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL,"http://avatar.csdn.net/B/3/F/1_sandyran.jpg");//分享的图片URL
+//        params.putString(QQShare.SHARE_TO_QQ_APP_NAME, "南开大学");//应用名称
+//        mTencent.shareToQQ(ThirdAppActivity.this, params, new ShareUiListener());
+//    }
 }

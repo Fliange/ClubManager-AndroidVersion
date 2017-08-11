@@ -82,7 +82,8 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:contentDescription="@null"
-            android:background="@drawable/font"
+            android:src="@drawable/font"
+            android:background="@null"
             />
         <TextView
             android:layout_width="0dp"

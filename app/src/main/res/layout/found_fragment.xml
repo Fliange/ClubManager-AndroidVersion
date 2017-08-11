@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -35,7 +35,7 @@
         app:unSelectedIndicatorWidth="6dp"/>
 
     <ListView
-        android:layout_below="@+id/title_bar"
+        android:layout_below="@+id/banner1"
         android:id="@+id/found_listView"
         android:layout_above="@+id/issue_input"
         android:layout_width="match_parent"
@@ -70,4 +70,4 @@
             android:layout_marginLeft="10dp"
             android:text="发 送"/>
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

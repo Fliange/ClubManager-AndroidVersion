@@ -17,10 +17,12 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textColor="#ff0000"
+            android:textColor="#ffffff"
             android:textSize="20dp"
+            android:background="#FF3333"
             android:layout_weight="1"
-            android:text="删除" />
+            android:text="删除"
+             />
 
 
         <CheckBox
@@ -28,10 +30,10 @@
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:textColor="#00ff00"
+            android:textColor="#ffffff"
             android:gravity="center"
             android:textSize="20dp"
-            android:background="@android:color/transparent"
+            android:background="#339900"
             android:button="@android:color/transparent"
             android:text="标记"/>
 
@@ -42,12 +44,12 @@
             android:id="@+id/tv_swipe_top1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:textColor="#0000ff"
+            android:textColor="#ffffff"
+            android:background="#0099FF"
             android:textSize="20dp"
             android:gravity="center"
             android:layout_weight="1"
             android:text="置顶" />
-
 
     </LinearLayout>
 
