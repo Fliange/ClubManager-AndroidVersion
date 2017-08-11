@@ -62,9 +62,9 @@ public class FoundViewFragment extends Fragment{
         res.add(R.drawable.lunbo2);
         res.add(R.drawable.lunbo3);
         List<String> titles = new ArrayList<>();
-        titles.add("标题一");
-        titles.add("标题二");
-        titles.add("标题三");
+        titles.add("邓永恒通宵活动");
+        titles.add("统率请吃火锅活动");
+        titles.add("明天就回家拉！嘻嘻");
         if (bannerLayout1 != null) {
             bannerLayout1.setViewRes(res, titles);
         }

@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:text="张瑾，作为伪前端程序员掌握主动权，哈哈哈，做邓永恒一手无法掌控的女人！！！！！"/>
 
 </LinearLayout>
