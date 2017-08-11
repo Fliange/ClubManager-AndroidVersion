@@ -23,6 +23,12 @@ import android.widget.Toast;
 
 import com.nankai.clubmanager.JellyInterpolator;
 import com.nankai.clubmanager.R;
+import com.tencent.connect.UserInfo;
+import com.tencent.connect.auth.QQToken;
+import com.tencent.connect.common.Constants;
+import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.Tencent;
+import com.tencent.tauth.UiError;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -62,6 +68,13 @@ public class LoginActivity extends Activity {
     OkHttpClient okHttpClient = new OkHttpClient();
     private float mWidth, mHeight;
 
+    //第三方登录
+    private static final String TAG = "ThirdAppActivity";
+    private static final String APP_ID = "1106344422";//官方获取的APPID
+    private Tencent mTencent;
+    private BaseUiListener mIUiListener;
+    private UserInfo mUserInfo;
+
     @Event(value={R.id.main_btn_login,R.id.main_update})
     private void doEvent(View view){
         switch(view.getId()){
@@ -94,6 +107,7 @@ public class LoginActivity extends Activity {
                     Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(LoginActivity.this,MainActivity.class);
                     startActivity(intent);
+                    finish();
                     try {
                         JSONObject obj=new JSONObject(result);
                         SharedPreferences.Editor editor = sp.edit();
@@ -121,6 +135,9 @@ public class LoginActivity extends Activity {
         String temp_password = sp.getString("password","");
         username.setText(temp_username);
         password.setText(temp_password);
+        //传入参数APPID和全局Context上下文
+        mTencent = Tencent.createInstance(APP_ID,LoginActivity.this.getApplicationContext());
+
     }
 
     private void inputAnimator(final View view, float w, float h) {
@@ -251,5 +268,91 @@ public class LoginActivity extends Activity {
         editor.putString("username",username.getText().toString());
         editor.putString("password",password.getText().toString());
         editor.commit();
+    }
+
+    //第三方登录
+    /**
+     * 自定义监听器实现IUiListener接口后，需要实现的3个方法
+     * onComplete完成 onError错误 onCancel取消
+     */
+    private class BaseUiListener implements IUiListener {
+
+        @Override
+        public void onComplete(Object response) {
+            Toast.makeText(LoginActivity.this, "授权成功", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "response:" + response);
+            JSONObject obj = (JSONObject) response;
+            Log.i("登录结果-------------",obj.toString());
+            try {
+                String openID = obj.getString("openid");
+                String accessToken = obj.getString("access_token");
+                String expires = obj.getString("expires_in");
+                mTencent.setOpenId(openID);
+                mTencent.setAccessToken(accessToken,expires);
+                QQToken qqToken = mTencent.getQQToken();
+                mUserInfo = new UserInfo(getApplicationContext(),qqToken);
+                mUserInfo.getUserInfo(new IUiListener() {
+                    @Override
+                    public void onComplete(Object response) {
+                        Log.e(TAG,"登录成功"+response.toString());
+                        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+
+                    @Override
+                    public void onError(UiError uiError) {
+                        Log.e(TAG,"登录失败"+uiError.toString());
+                        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        Log.e(TAG,"登录取消");
+                        Intent intent=new Intent(LoginActivity.this,LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public void onError(UiError uiError) {
+            Toast.makeText(LoginActivity.this, "授权失败", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onCancel() {
+            Toast.makeText(LoginActivity.this, "授权取消", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    @Event(value = {R.id.third_app_login},type = View.OnClickListener.class)
+    private void thirdAppLogin(View view){
+        /**通过这句代码，SDK实现了QQ的登录，这个方法有三个参数，第一个参数是context上下文，第二个参数SCOPO 是一个String类型的字符串，表示一些权限
+         官方文档中的说明：应用需要获得哪些API的权限，由“，”分隔。例如：SCOPE = “get_user_info,add_t”；所有权限用“all”
+         第三个参数，是一个事件监听器，IUiListener接口的实例，这里用的是该接口的实现类 */
+        mIUiListener = new BaseUiListener();
+        //all表示获取所有权限
+        mTencent.login(LoginActivity.this,"all", mIUiListener);
+    }
+
+    /**
+     * 在调用Login的Activity或者Fragment中重写onActivityResult方法
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == Constants.REQUEST_LOGIN){
+            Tencent.onActivityResultData(requestCode,resultCode,data,mIUiListener);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
