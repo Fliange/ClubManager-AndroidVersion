@@ -9,7 +9,7 @@
         android:id="@+id/back_activity"
         android:layout_width="19dp"
         android:layout_height="19dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="13dp"
         android:src="@drawable/back" />
 
 </RelativeLayout>

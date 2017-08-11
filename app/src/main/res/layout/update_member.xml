@@ -2,14 +2,13 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:columnCount="1"
-    android:rowCount="11"
+    android:background="#ffffff"
     tools:context="com.nankai.clubmanager.activity.UpdateMemberActivity">
 
-    <ScrollView>
+    <ScrollView
+        android:layout_marginTop="25dp">
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

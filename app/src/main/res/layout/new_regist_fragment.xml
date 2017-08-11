@@ -24,7 +24,7 @@
             android:paddingRight="30dip"
             android:paddingTop="4dip"
             android:hint="搜索"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
