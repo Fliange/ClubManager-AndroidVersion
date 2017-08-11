@@ -88,8 +88,21 @@ public class HomePageFragment extends Fragment{
         about_us=(TextView)view.findViewById(R.id.about_us);
         registEntrance=(TextView) view.findViewById(R.id.regist_entrance);
 
+        name = (TextView) view.findViewById(R.id.name);
+        department = (TextView) view.findViewById(R.id.department);
         sp1=getActivity().getSharedPreferences("loginInfor",MODE_PRIVATE);
 
+        sp1=getActivity().getSharedPreferences("loginInfor",MODE_PRIVATE);
+
+        name.setText(sp1.getString("name","邓永恒"));
+        department.setText(sp1.getString("dptName","邓永恒的部门"));
+        view.findViewById(R.id.pic).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),LoginActivity.class);
+                startActivity(intent);
+            }
+        });
         //跳到个人信息
         personalInfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -184,28 +197,17 @@ public class HomePageFragment extends Fragment{
                 builder.create().show();
             }
         });
-        return view;
-    }
-    public void my(View view){
-        switch(view.getId()){
-            case R.id.modify_password:
-                Intent intent=new Intent(HomePageFragment.this.getActivity(),PasswordUpdateActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.modify_information:
-                break;
-            case R.id.myapartment:
-                //sp1.getInt("department",0);//这里要把部门的id传给部门首页那个activity
-                break;
-            case R.id.mycollection:
-                break;
-            case R.id.logout:
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 SharedPreferences.Editor editor=sp1.edit();
                 editor.putBoolean("status",false);//登录状态改为未登录
                 editor.commit();
                 Intent intent1=new Intent(HomePageFragment.this.getActivity(), LoginActivity.class);
                 startActivity(intent1);//退出当前账号后跳转到登录界面
-        }
+            }
+        });
+        return view;
     }
     /*
 * 判断sdcard是否被挂载
