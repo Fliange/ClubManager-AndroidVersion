@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.daimajia.swipe.SwipeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sl_content"
+    android:layout_width="match_parent"
+    android:layout_height="120dp">
+
+
+    <LinearLayout
+        android:layout_width="180dp"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/tv_swipe_delect1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="#ff0000"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:text="删除" />
+
+
+        <CheckBox
+            android:id="@+id/cb_swipe_tag1"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:textColor="#00ff00"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:background="@android:color/transparent"
+            android:button="@android:color/transparent"
+            android:text="标记"/>
+
+
+
+
+        <TextView
+            android:id="@+id/tv_swipe_top1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textColor="#0000ff"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="置顶" />
+
+
+    </LinearLayout>
+
+
+    <!--<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+
+        &lt;!&ndash;<ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/iv_myice"/>&ndash;&gt;
+
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textSize="15sp" />
+
+
+    </RelativeLayout>-->
+    <LinearLayout
+        android:padding="10dp"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--What you want to show in SurfaceView-->
+        <TextView
+            android:id="@+id/manage_material_name"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/material_name_bg"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="15dp"
+                    android:text="所属部门："/>
+                <TextView
+                    android:id="@+id/manage_material_org"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="学生会宣传部"
+                    android:textSize="15dp"
+                    android:layout_marginTop="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="10dp"
+                    android:text="X"/>
+                <TextView
+                    android:id="@+id/manage_material_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="15dp"
+                    android:text="100"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="备注："/>
+                <TextView
+                    android:id="@+id/manage_materail_extra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    android:text="这是我们部门的东西"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</com.daimajia.swipe.SwipeLayout>
