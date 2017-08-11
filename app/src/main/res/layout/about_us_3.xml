@@ -6,12 +6,12 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/test_pic"/>
+        android:src="@drawable/zhangjin"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
-        android:text="张瑾的个人介绍:很帅"/>
+        android:text="张瑾，作为伪前端程序员掌握主动权，哈哈哈，做邓永恒一手无法掌控的女人！！！！！"/>
 
 </LinearLayout>

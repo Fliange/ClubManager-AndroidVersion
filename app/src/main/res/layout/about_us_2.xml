@@ -6,12 +6,12 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/test_pic"/>
+        android:src="@drawable/dengyongheng"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
-        android:text="邓永恒的个人介绍:很帅"/>
+        android:text="邓永恒说我们做的不好看！！！因为没有放他的照片！！！！"/>
 
 </LinearLayout>

@@ -46,7 +46,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.2'
     compile 'com.android.support:support-v4:22.2.1'
-    compile files('E:/sss/ClubManager-AndroidVersion/.idea/libraries/open_sdk_r5793_lite.jar')
+    compile files('F:/MyCode/Andriod/ClubManager-AndroidVersion/.idea/libraries/open_sdk_r5793_lite.jar')
 }
 
 //侧拉框的抖动效果

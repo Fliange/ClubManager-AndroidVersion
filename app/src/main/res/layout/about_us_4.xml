@@ -6,12 +6,12 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/test_pic"/>
+        android:src="@drawable/zhangyichen"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
-        android:text="张一尘的个人介绍:很帅"/>
+        android:text="张一尘作为伪前端程序员，更要掌握主动权"/>
 
 </LinearLayout>
